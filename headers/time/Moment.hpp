@@ -16,7 +16,7 @@ class Moment {
         int time;
         bool date;
 
-        int toSec(int, int, int, int, int) const;
+        Moment(int, bool);
 
     public:
         Moment();
@@ -52,14 +52,14 @@ class Moment {
         bool operator>(const Moment&) const;
         bool operator<(const Moment&) const;
         bool operator==(const Moment&) const;
-        Moment operator++();
+        Moment& operator++();
         Moment operator++(int);
+
+        friend ostream& operator<<(ostream&, const Moment&);
 
         static Moment now();
 
 };
-
-ostream& operator<<(ostream&, const Moment&);
 //istream& operator>>(istream&, Moment&);
 
 #endif // MOMENT_H

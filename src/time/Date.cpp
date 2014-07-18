@@ -126,10 +126,8 @@ Date Date::operator-(int value) const {
     return d;
 }
 
-Date Date::operator-(const Date& date) const {
-    Date d(*this);
-    d.time -= date.time;
-    return d;
+int Date::operator-(const Date& date) const {
+    return (int) difftime(this->time, date.time);
 }
 
 string Date::toString() const {

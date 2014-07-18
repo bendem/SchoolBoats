@@ -35,7 +35,7 @@ class Date {
         Date operator+(int) const;
         Date operator+(const Date&) const;
         Date operator-(int) const;
-        Date operator-(const Date&) const;
+        int operator-(const Date&) const;
 
         string toString() const;
 

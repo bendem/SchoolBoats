@@ -1,8 +1,3 @@
-/*
- * File:   Exception.cpp
- * Author: bendem
- */
-
 #include "exceptions/Exception.hpp"
 
 Exception::Exception() : Exception("") {}
@@ -47,7 +42,7 @@ bool Exception::hasSource() const {
 }
 
 ostream& operator<<(ostream& stream, const Exception& e) {
-    stream << e.getMessage() << endl;
+    stream << "Exception: " << e.getMessage() << endl;
     if(e.hasSource()) {
         stream << "Caused by " << e.getSource();
     }

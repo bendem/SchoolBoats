@@ -1,17 +1,16 @@
 #include "time/Moment.hpp"
 
 Moment::Moment() : Moment(0) {}
-
-Moment::Moment(int time) {
-    this->date = false;
-    this->time = time * 60;
+Moment::Moment(int time) : Moment(time * 60, false) {}
+Moment::Moment(int time, bool isDate) {
+    this->date = isDate;
+    this->time = time;
 }
 
 Moment::Moment(int year, int month, int day) : Moment(year, month, day, 0, 0) {}
-
 Moment::Moment(int year, int month, int day, int hour, int minute) {
     this->date = true;
-    this->time = this->toSec(year, month, day, hour, minute);
+    this->time = Date(year, month, day, hour, minute, 0).getTime();
 }
 
 Moment::Moment(const Moment& other) {
@@ -128,21 +127,79 @@ Moment Moment::operator+(const Moment& m) const {
 
     if(!this->isDate() && !m.isDate()) {
         // délai + délai
-        return Moment(this->time + m.time);
+        return Moment(this->time + m.time, false);
     }
 
     // date + delai
-
-
+    Date d(this->date ? this->time : m.time);
+    d.add(this->date ? m.time : this->time, Second);
+    return Moment(d.getTime(), true);
 }
-Moment Moment::operator+(const int val) const {}
-Moment Moment::operator-(const Moment& m) const {}
-Moment Moment::operator-(const int val) const {}
-bool Moment::operator>(const Moment& m) const {}
-bool Moment::operator<(const Moment& m) const {}
-bool Moment::operator==(const Moment& m) const {}
-Moment Moment::operator++() {}
-Moment Moment::operator++(int) {}
+Moment Moment::operator+(const int val) const {
+    if(this->date) {
+        Moment m(*this);
+        m.setMinute(m.getMinute() + val);
+        return m;
+    }
+    return Moment(this->time + val*60, false);
+}
+Moment Moment::operator-(const Moment& m) const {
+    if(!this->date && m.date) {
+        // délai - date
+        throw InvalidArgumentException("You shouldn't remove a delay from a date");
+    }
+
+    if(!this->date && !m.date) {
+        // délai - délai
+        return Moment(this->time - m.time, false);
+    }
+
+    if(this->date && !m.date) {
+        // date - délai
+        Date d(this->time);
+        d.remove(m.time, Second);
+        return Moment(d.getTime(), true);
+    }
+
+    // date - date
+    return Moment(Date(this->time) - Date(m.time), false);
+}
+Moment Moment::operator-(const int val) const {
+    if(this->date) {
+        Date d(this->time);
+        d.remove(val, Minute);
+        return Moment(d.getTime(), true);
+    }
+
+    return Moment(this->time - val*60, false);
+}
+bool Moment::operator>(const Moment& m) const {
+    if(this->date != m.date) {
+        throw InvalidArgumentException("Can't compare a date with a delay");
+    }
+    return this->time > m.time;
+}
+bool Moment::operator<(const Moment& m) const {
+    if(this->date != m.date) {
+        throw InvalidArgumentException("Can't compare a date with a delay");
+    }
+    return this->time < m.time;
+}
+bool Moment::operator==(const Moment& m) const {
+    if(this->date != m.date) {
+        throw InvalidArgumentException("Can't compare a date with a delay");
+    }
+    return this->time == m.time;
+}
+Moment& Moment::operator++() {
+    this->setDay(this->getDay()+1);
+    return *this;
+}
+Moment Moment::operator++(int) {
+    Moment m(*this);
+    this->setDay(this->getDay()+1);
+    return m;
+}
 
 string Moment::toString() const {
     return "Moment{time=" + StringUtils::toString(this->time)
@@ -150,17 +207,15 @@ string Moment::toString() const {
         + "}";
 }
 
-int Moment::toSec(int year, int month, int day, int hour, int minute) const {
-    Date d(year, month, day, hour, minute, 0);
-
-    return d.getTime();
-}
-
 Moment Moment::now() {
-    return Moment(Date().getTime());
+    return Moment(Date().getTime(), true);
 }
-
 
 ostream& operator<<(ostream& s, const Moment& m) {
+    if(m.isDate()) {
+        Date d(m.time);
+        return s << d.get(Year) << "/" <<  d.get(Month) << "/" << d.get(Day) << " " << d.get(Hour) << ":" << d.get(Minute) << ":" << d.get(Second);
+    }
+    return s << m.toString();
 }
 //istream& operator>>(istream& s, Moment& m) {}
