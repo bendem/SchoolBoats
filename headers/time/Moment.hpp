@@ -60,6 +60,5 @@ class Moment {
         static Moment now();
 
 };
-//istream& operator>>(istream&, Moment&);
 
 #endif // MOMENT_H

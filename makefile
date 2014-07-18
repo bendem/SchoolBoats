@@ -12,7 +12,7 @@ OBJ:=$(FILES:$(SRC)/%.cpp=$(OUT)/%.o)
 
 .SILENT:
 
-build: $(OUT)/application $(OUT)/Test2 $(OUT)/Test3
+build: $(OUT)/application $(OUT)/Test2 $(OUT)/Test3 $(OUT)/Test4
 
 $(OUT)/application: main.cpp $(OBJ)
 	echo Compiling $@...
