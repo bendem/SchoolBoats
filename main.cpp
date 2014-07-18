@@ -29,5 +29,6 @@ int main(int argc, char** argv) {
     cout << "size: " << v.maxSize() << " / current size: " << v.currentSize() << endl;
     cout << v.get(1) << endl;
     cout << "size: " << v.maxSize() << " / current size: " << v.currentSize() << endl;
+
     return 0;
 }

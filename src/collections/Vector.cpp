@@ -43,7 +43,7 @@ Vector<T>::~Vector() {
  * @return
  */
 template<class T>
-T Vector<T>::get(int index) const {
+T& Vector<T>::get(int index) const {
     if(index >= this->_size) {
         throw OutOfBoundsException("Index too big: " + StringUtils::toString(index));
     }
@@ -58,7 +58,7 @@ T Vector<T>::get(int index) const {
  * @param
  */
 template<class T>
-void Vector<T>::set(int index, T value) {
+void Vector<T>::set(int index, const T& value) {
     this->validate(index);
     this->_values[index] = value;
     if(!this->_indexes[index]) {

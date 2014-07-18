@@ -22,8 +22,8 @@ class Vector {
         Vector(const Vector& orig);
         ~Vector();
 
-        T get(int) const;
-        void set(int, T);
+        T& get(int) const;
+        void set(int, const T&);
         void remove(int);
         int  currentSize() const;
         int  maxSize() const;
