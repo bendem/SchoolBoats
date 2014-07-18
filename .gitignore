@@ -1,0 +1,9 @@
+.codelite/*
+.clang/*
+nbproject/*
+target/*
+*.project
+*.workspace
+*.stackdump
+*.cbp
+*.layout
