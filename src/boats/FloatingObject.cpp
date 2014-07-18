@@ -20,18 +20,22 @@ void FloatingObject::setModel(FloatingObjectModel model) {
     this->model = model;
 }
 
-string FloatingObject::getIdentifier() {
+string FloatingObject::getIdentifier() const {
     return this->identifier;
 }
 
-FloatingObjectModel& FloatingObject::getModel() {
+const FloatingObjectModel& FloatingObject::getModel() const {
     return this->model;
 }
 
-string FloatingObject::toString() {
+string FloatingObject::toString() const {
     return "FloatingObject{id='" + this->identifier + "', model=" + this->model.toString() + "}";
 }
 
-void FloatingObject::display() {
+void FloatingObject::display() const {
     cout << toString() << endl;
+}
+
+ostream& operator<<(ostream& s, const FloatingObject& f) {
+    return s << f.toString() << endl;
 }

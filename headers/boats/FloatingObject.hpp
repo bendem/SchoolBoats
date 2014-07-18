@@ -21,11 +21,13 @@ class FloatingObject {
         void setIdentifier(string);
         void setModel(FloatingObjectModel);
 
-        string getIdentifier();
-        FloatingObjectModel& getModel();
+        string getIdentifier() const;
+        const FloatingObjectModel& getModel() const;
 
-        string toString();
-        void display();
+        string toString() const;
+        void display() const;
+
+        friend ostream& operator<<(ostream&, const FloatingObject&);
 
 };
 

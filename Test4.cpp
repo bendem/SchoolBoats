@@ -74,9 +74,9 @@ void Essai1() {
     cout << "----- 1.2 Test de quelques methodes heritees ou non ------------------------" << endl;
     // Attention !!! N'oubliez pas de faire tous les setters/getters meme s'il ne sont pas testés ici !
     cout << "--> On modifie la date de depart de r2..." << endl;
-    r2.setDepart(Moment(2013, 9, 2, 13, 30));
+    r2.setStart(Moment(2013, 9, 2, 13, 30));
     cout << "Nom : " << r2.getName() << endl;
-    cout << "Lieu : " << r2.getLieu() << endl;
+    cout << "Lieu : " << r2.getLocation() << endl;
     cout << "Objet flottant : " << r2.getFloatingObject() << endl;  // A faire : opération << de FloatingObject
     cout << "Nom Course : " << r2.getRaceName() << endl;
     cout << "Date/heure depart : " << r2.getStart() << endl;
@@ -93,7 +93,7 @@ void Essai1() {
     r2.display();
     cout << endl << endl;
 
-    cout << "----- 1.4 Allocation dynamique de Regate avec pointeur de type Active (Upcasting) -----" << endl;
+    /*cout << "----- 1.4 Allocation dynamique de Regate avec pointeur de type Activity (Upcasting) -----" << endl;
     Activity *p2 = new Regatta(r2);
     p2->display();  // Quelle methode Affiche est appelee ? celle de Activity ou de Regate ?
     delete p2;      // Quel destructeur est appele ? celui de Activity ou de Regate ?
@@ -110,7 +110,7 @@ void Essai1() {
     Regatta r4;
     cout << "--> Execution du code r4 = r3; :" << endl;
     r4 = r3;
-    cout << "--> r4 = " << r4 << endl;
+    cout << "--> r4 = " << r4 << endl;*/
 }
 
 /***********************************************************************************************/
@@ -127,11 +127,11 @@ void Essai2() {
     cout << endl;
 
     cout << "----- 2.2 Test des setters -------------------------------------------------" << endl;
-    s1.setNom("Catamaran A43");
-    s1.setLieu("Abri du Port Cros, Cagnes-sur-mer");
+    s1.setName("Catamaran A43");
+    s1.setLocation("Abri du Port Cros, Cagnes-sur-mer");
     s1.setFloatingObject(FloatingObject("XX-1111", FloatingObjectModel::HOBIE_14));
-    s1.setNiveau(1);
-    s1.setHoraire(Planning(Moment(2013, 8, 26), Moment(2013, 8, 30)));
+    s1.setLevel(1);
+    s1.setPlanning(Planning(Moment(2013, 8, 26), Moment(2013, 8, 30)));
     cout << "--> Voici s1 (apres les setters) :" << endl;
     s1.display();
     cout << endl;
@@ -141,7 +141,7 @@ void Essai2() {
     cout << "Lieu           : " << s1.getLocation() << endl;
     cout << "Objet flottant : " << s1.getFloatingObject() << endl;
     cout << "Niveau         : " << s1.getLevel() << endl;
-    cout << "Horaire        : " << s1.getSchedule() << endl;
+    cout << "Horaire        : " << s1.getPlanning() << endl;
     cout << endl;
 
     cout << "----- 2.4 Test du constructeur d'initialisation ----------------------------" << endl;
@@ -169,7 +169,7 @@ void Essai2() {
     delete p2;      // Quel destructeur est appele ? celui de Activity ou de Stage ?
     cout << endl;
 
-    cout << '----- 2.7 Test de cin et cout ----------------------------------------------' << endl;
+    /*cout << '----- 2.7 Test de cin et cout ----------------------------------------------' << endl;
     Course s3;
     cout << "--> Entrez le stage s3 :" << endl;
     cin >> s3;
@@ -181,7 +181,7 @@ void Essai2() {
     Course s4;
     cout << "--> Execution du code s4 = s3; :" << endl;
     s4 = s3;
-    cout << "--> s4 = " << s4 << endl;
+    cout << "--> s4 = " << s4 << endl;*/
 }
 
 /******************************************************************************************/
