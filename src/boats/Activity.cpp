@@ -55,3 +55,10 @@ void Activity::read(istream& s) {
     s >> this->location;
     s >> *this->object;
 }
+
+Activity& Activity::operator=(const Activity& a) {
+    this->name = a.name;
+    this->location = a.location;
+    this->object = new FloatingObject(*a.object);
+    return *this;
+}

@@ -31,6 +31,8 @@ class Activity {
 
         virtual void read(istream&);
 
+        Activity& operator=(const Activity&);
+
 };
 
 #endif // ACTIVITY_H

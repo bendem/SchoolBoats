@@ -43,6 +43,13 @@ void Course::read(istream& s) {
     s >> this->planning;
 }
 
+Course& Course::operator=(const Course& c) {
+    this->level = c.level;
+    this->planning = Planning(c.planning);
+    Activity::operator=(c);
+    return *this;
+}
+
 ostream& operator<<(ostream& s, const Course& c) {
     return s << c.toString();
 }

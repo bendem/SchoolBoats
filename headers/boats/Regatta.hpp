@@ -26,6 +26,7 @@ class Regatta : public Activity {
 
         void read(istream&);
 
+        Regatta& operator=(const Regatta&);
         friend ostream& operator<<(ostream&, const Regatta&);
         friend istream& operator>>(istream&, Regatta&);
 

@@ -30,6 +30,7 @@ class Course : public Activity {
 
         void read(istream&);
 
+        Course& operator=(const Course&);
         friend ostream& operator<<(ostream&, const Course&);
         friend istream& operator>>(istream&, Course&);
 

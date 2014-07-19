@@ -33,6 +33,13 @@ void Regatta::read(istream& s) {
     s >> this->start;
 }
 
+Regatta& Regatta::operator=(const Regatta& r) {
+    this->raceName = r.raceName;
+    this->start = r.start;
+    Activity::operator=(r);
+    return *this;
+}
+
 ostream& operator<<(ostream& s, const Regatta& r) {
     return s << r.toString();
 }
