@@ -1,6 +1,7 @@
 #ifndef ACTIVITY_H
 #define ACTIVITY_H
 
+#include <istream>
 #include <string>
 #include "boats/FloatingObject.hpp"
 
@@ -24,7 +25,7 @@ class Activity {
         void setFloatingObject(FloatingObject);
 
         virtual string toString() const;
-        virtual void display() const;
+        /*virtual */void display() const;
 
         virtual string getInfo() const = 0;
 

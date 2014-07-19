@@ -1,9 +1,11 @@
 #ifndef REGATTA_H
 #define REGATTA_H
 
+#include <iostream>
+#include <string>
 #include "boats/Activity.hpp"
+#include "boats/FloatingObject.hpp"
 #include "time/Moment.hpp"
-
 
 class Regatta : public Activity {
 

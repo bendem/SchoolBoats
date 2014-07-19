@@ -1,6 +1,7 @@
 #ifndef NOTADATEEXCEPTION_H
 #define NOTADATEEXCEPTION_H
 
+#include <string>
 #include "exceptions/Exception.hpp"
 
 class NotADateException : public Exception {

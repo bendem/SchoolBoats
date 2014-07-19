@@ -1,6 +1,8 @@
 #ifndef PLANNING_H
 #define PLANNING_H
 
+#include <iostream>
+#include <string>
 #include "time/Moment.hpp"
 
 class Planning {

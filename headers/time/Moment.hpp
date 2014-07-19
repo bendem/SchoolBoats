@@ -1,6 +1,7 @@
 #ifndef MOMENT_H
 #define MOMENT_H
 
+#include <iostream>
 #include <string>
 #include "exceptions/InvalidArgumentException.hpp"
 #include "exceptions/InvalidDateException.hpp"

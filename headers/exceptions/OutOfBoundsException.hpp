@@ -1,6 +1,7 @@
 #ifndef OUTOFBOUNDSEXCEPTION_H
 #define OUTOFBOUNDSEXCEPTION_H
 
+#include <string>
 #include "exceptions/Exception.hpp"
 
 class OutOfBoundsException : Exception {

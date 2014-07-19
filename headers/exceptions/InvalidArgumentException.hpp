@@ -1,6 +1,7 @@
 #ifndef INVALIDARGUMENTEXCEPTION_H
 #define INVALIDARGUMENTEXCEPTION_H
 
+#include <string>
 #include "exceptions/Exception.hpp"
 
 using namespace std;

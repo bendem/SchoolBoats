@@ -1,6 +1,7 @@
 #ifndef INVALIDDATEEXCEPTION_H
 #define INVALIDDATEEXCEPTION_H
 
+#include <string>
 #include "exceptions/Exception.hpp"
 
 class InvalidDateException : public Exception {

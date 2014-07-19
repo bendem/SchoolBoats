@@ -2,9 +2,8 @@
 #define VECTOR_HPP
 
 #include <string>
-#include <stdlib.h>
-#include "exceptions/OutOfBoundsException.hpp"
 #include "exceptions/InvalidArgumentException.hpp"
+#include "exceptions/OutOfBoundsException.hpp"
 #include "utils/StringUtils.hpp"
 
 template<class T>
