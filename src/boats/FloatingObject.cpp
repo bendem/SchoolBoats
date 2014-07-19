@@ -41,7 +41,5 @@ ostream& operator<<(ostream& s, const FloatingObject& f) {
 }
 
 istream& operator>>(istream& s, FloatingObject& f) {
-    s >> f.identifier;
-    s >> f.model;
-    return s;
+    return s >> f.identifier >> f.model;
 }
