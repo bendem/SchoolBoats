@@ -56,6 +56,7 @@ class Moment {
         Moment operator++(int);
 
         friend ostream& operator<<(ostream&, const Moment&);
+        friend istream& operator>>(istream&, Moment&);
 
         static Moment now();
 

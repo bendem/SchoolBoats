@@ -22,6 +22,11 @@ class Regatta : public Activity {
 
         string getInfo() const;
 
+        void read(istream&);
+
+        friend ostream& operator<<(ostream&, const Regatta&);
+        friend istream& operator>>(istream&, Regatta&);
+
 };
 
 #endif // REGATTA_H

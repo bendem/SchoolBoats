@@ -28,6 +28,8 @@ class Activity {
 
         virtual string getInfo() const = 0;
 
+        virtual void read(istream&);
+
 };
 
 #endif // ACTIVITY_H

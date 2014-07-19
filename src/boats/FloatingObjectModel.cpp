@@ -47,6 +47,10 @@ void FloatingObjectModel::display() const {
     cout << toString() << endl;
 }
 
+istream& operator>>(istream& s, FloatingObjectModel& m) {
+    return s >> m.manufacturer >> m.model >> m.size;
+}
+
 string FloatingObjectModel::HOBIE = "Hobie";
 string FloatingObjectModel::BICSPORT = "BIC Sport";
 

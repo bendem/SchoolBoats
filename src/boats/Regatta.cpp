@@ -26,3 +26,18 @@ void Regatta::setStart(const Moment& m) {
 string Regatta::getInfo() const {
     return "REGATE: " + this->raceName + "#" + this->start.toString();
 }
+
+void Regatta::read(istream& s) {
+    Activity::read(s);
+    s >> this->raceName;
+    s >> this->start;
+}
+
+ostream& operator<<(ostream& s, const Regatta& r) {
+    return s << r.toString();
+}
+
+istream& operator>>(istream& s, Regatta& r) {
+    r.read(s);
+    return s;
+}

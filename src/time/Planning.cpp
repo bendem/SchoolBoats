@@ -32,3 +32,7 @@ string Planning::toString() const {
 ostream& operator<<(ostream& s, const Planning& p) {
     return s << p.toString() << endl;
 }
+
+istream& operator>>(istream& s, Planning& p) {
+    return s >> p.start >> p.end;
+}

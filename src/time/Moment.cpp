@@ -218,4 +218,6 @@ ostream& operator<<(ostream& s, const Moment& m) {
     }
     return s << m.toString();
 }
-//istream& operator>>(istream& s, Moment& m) {}
+istream& operator>>(istream& s, Moment& m) {
+    return s >> m.time >> m.date;
+}

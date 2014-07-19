@@ -29,6 +29,8 @@ class FloatingObjectModel {
         string toString() const;
         void display() const;
 
+        friend istream& operator>>(istream&, FloatingObjectModel&);
+
         static string HOBIE;
         static string BICSPORT;
         static FloatingObjectModel HOBIE_14;

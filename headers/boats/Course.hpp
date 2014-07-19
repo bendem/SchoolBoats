@@ -28,6 +28,11 @@ class Course : public Activity {
 
         string getInfo() const;
 
+        void read(istream&);
+
+        friend ostream& operator<<(ostream&, const Course&);
+        friend istream& operator>>(istream&, Course&);
+
 };
 
 #endif // COURSE_H

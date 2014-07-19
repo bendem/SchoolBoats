@@ -39,3 +39,9 @@ void FloatingObject::display() const {
 ostream& operator<<(ostream& s, const FloatingObject& f) {
     return s << f.toString() << endl;
 }
+
+istream& operator>>(istream& s, FloatingObject& f) {
+    s >> f.identifier;
+    s >> f.model;
+    return s;
+}

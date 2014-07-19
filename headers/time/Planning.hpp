@@ -21,6 +21,7 @@ class Planning {
         string toString() const;
 
         friend ostream& operator<<(ostream&, const Planning&);
+        friend istream& operator>>(istream&, Planning&);
 
 };
 

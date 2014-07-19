@@ -169,7 +169,7 @@ void Essai2() {
     delete p2;      // Quel destructeur est appele ? celui de Activity ou de Stage ?
     cout << endl;
 
-    /*cout << '----- 2.7 Test de cin et cout ----------------------------------------------' << endl;
+    cout << "----- 2.7 Test de cin et cout ----------------------------------------------" << endl;
     Course s3;
     cout << "--> Entrez le stage s3 :" << endl;
     cin >> s3;
@@ -181,7 +181,7 @@ void Essai2() {
     Course s4;
     cout << "--> Execution du code s4 = s3; :" << endl;
     s4 = s3;
-    cout << "--> s4 = " << s4 << endl;*/
+    cout << "--> s4 = " << s4 << endl;
 }
 
 /******************************************************************************************/

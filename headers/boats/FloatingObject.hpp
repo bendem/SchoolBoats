@@ -28,6 +28,7 @@ class FloatingObject {
         void display() const;
 
         friend ostream& operator<<(ostream&, const FloatingObject&);
+        friend istream& operator>>(istream&, FloatingObject&);
 
 };
 

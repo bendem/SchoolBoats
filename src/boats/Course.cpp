@@ -36,3 +36,18 @@ void Course::display() const {
 string Course::getInfo() const {
     return "COURSE: " + StringUtils::toString(this->level) + "#" + this->planning.toString();
 }
+
+void Course::read(istream& s) {
+    Activity::read(s);
+    s >> this->level;
+    s >> this->planning;
+}
+
+ostream& operator<<(ostream& s, const Course& c) {
+    return s << c.toString();
+}
+
+istream& operator>>(istream& s, Course& c) {
+    c.read(s);
+    return s;
+}

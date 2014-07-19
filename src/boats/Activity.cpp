@@ -49,3 +49,9 @@ string Activity::toString() const {
 void Activity::display() const {
     cout << this->toString() << endl;
 }
+
+void Activity::read(istream& s) {
+    s >> this->name;
+    s >> this->location;
+    s >> *this->object;
+}
