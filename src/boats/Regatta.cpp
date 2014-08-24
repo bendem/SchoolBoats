@@ -62,13 +62,11 @@ void Regatta::save(ostream& os) const {
 }
 
 void Regatta::load(istream& is) {
-	this->raceName = StreamUtils::readString(is);
-	this->start.setTime(StreamUtils::readInt(is));
-
-	this->start.setDate(StreamUtils::readBool(is));
-
-	this->location = StreamUtils::readString(is);
-	this->name     = StreamUtils::readString(is);
+	this->raceName =            StreamUtils::readString(is);
+	this->start.setTime(        StreamUtils::readInt(is));
+	this->start.setDate(        StreamUtils::readBool(is));
+	this->location =            StreamUtils::readString(is);
+	this->name     =            StreamUtils::readString(is);
 	this->object->setIdentifier(StreamUtils::readString(is));
 
 	string manufacturer = StreamUtils::readString(is);
