@@ -6,26 +6,64 @@ template<class T>
 int OrderedList<T>::DESCENDING = 1;
 
 template<class T>
-int OrderedList<T>::compare(const T& e1, const T& e2) {
-	if(e1 > e2) {
-		return 1;
+OrderedList<T>::OrderedList() : OrderedList(OrderedList::ASCENDING) {}
+
+template<class T>
+OrderedList<T>::OrderedList(int mode) {
+	this->_mode = mode;
+}
+template<class T>
+OrderedList<T>::OrderedList(const OrderedList& list) : List<T>::List(list) {
+	this->_mode = list._mode;
+}
+
+template<class T>
+bool OrderedList<T>::shouldInsert(const T& current, const T& newElem) {
+	if(current > newElem && this->_mode == OrderedList::ASCENDING) {
+		return true;
 	}
-	return e1 < e2 ? -1 : 0;
+	if(current < newElem && this->_mode == OrderedList::DESCENDING) {
+		return true;
+	}
+	return false;
 }
 
 template<class T>
 void OrderedList<T>::add(const T& elem) {
-	// Add it at the start of the list if it is empty
-	if(this->isEmpty()) {
-		List<T>::add(elem);
-		return;
-	}
+    // Insert on first position
+    if(this->isEmpty() || this->shouldInsert(this->_first->current, elem)) {
+        struct Node<T> *tmp = this->_first;
+        this->_first = new struct Node<T>(elem);
+        this->_first->prev = NULL;
+        this->_first->next = tmp;
+        // If there was something after, link it to the first item
+        if(tmp) {
+            this->_first->next->prev = this->_first;
+        }
+        ++this->_size;
+        return;
+    }
 
-	// TODO Add somewhere else in the list
+    struct Node<T> *current = this->_first;
+    struct Node<T> *prev = this->_first;
+    while(prev != NULL) {
+        if(current == NULL || this->shouldInsert(current->current, elem)) {
+            prev->next = new struct Node<T>(elem);
+            prev->next->prev = prev;
+            prev->next->next = current;
+            break;
+        }
+        prev = current;
+        current = current->next;
+    }
+    ++this->_size;
 }
 
 template<class T>
 void OrderedList<T>::setMode(int mode) {
+	if(this->_mode != mode) {
+		// TODO Reverse list order!
+	}
 	this->_mode = mode;
 }
 

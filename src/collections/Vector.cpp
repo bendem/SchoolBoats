@@ -25,7 +25,15 @@ Vector<T>::Vector(int size) {
 template<class T>
 Vector<T>::Vector(const Vector<T>& orig) {
     this->_size = orig._size;
-    // TODO Write this
+    this->_values = new T[this->_size];
+    this->_indexes = new bool[this->_size];
+    this->_used = orig._used;
+    for(int i = 0; i < this->_size; ++i) {
+        this->_indexes[i] = orig._indexes[i];
+        if(this->_indexes[i]) {
+            this->_values[i] = orig._values[i];
+        }
+    }
 }
 
 /**
@@ -79,14 +87,15 @@ template<class T>
 T& Vector<T>::remove(int index) {
     this->validate(index);
     if(this->_indexes[index]) {
-        --this->_used;
         this->_indexes[index] = false;
+        --this->_used;
         return this->_values[index];
     }
+    throw InvalidArgumentException("No element at " + StringUtils::toString(index));
 }
 
 template<class T>
-int Vector<T>::currentSize() const {
+int Vector<T>::count() const {
     return this->_used;
 }
 
@@ -95,7 +104,7 @@ int Vector<T>::currentSize() const {
  * @return
  */
 template<class T>
-int Vector<T>::maxSize() const {
+int Vector<T>::size() const {
     return this->_size;
 }
 
@@ -134,7 +143,7 @@ bool Vector<T>::isValid(int index) const {
 template<class T>
 void Vector<T>::display() const {
 	cout << "[ ";
-    for(int i; i < this->_size; ++i) {
+    for(int i = 0; i < this->_size; ++i) {
         if(this->_indexes[i]) {
             cout << this->_values[i] << " ";
         } else {
@@ -147,7 +156,7 @@ void Vector<T>::display() const {
 template<class T>
 Vector<T>& Vector<T>::operator+(const T& elem) {
 	bool added = false;
-    for(int i; i < this->_size && !added; ++i) {
+    for(int i = 0; i < this->_size && !added; ++i) {
         if(!this->_indexes[i]) {
             this->_indexes[i] = true;
             this->_values[i] = elem;

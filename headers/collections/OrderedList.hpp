@@ -9,9 +9,12 @@ class OrderedList : public List<T> {
 	protected:
 		int _mode;
 
-		static int compare(const T&, const T&);
+		bool shouldInsert(const T&, const T&);
 
 	public:
+		OrderedList();
+		OrderedList(int);
+		OrderedList(const OrderedList&);
 
         void add(const T&);
 

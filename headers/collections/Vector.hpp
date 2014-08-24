@@ -27,8 +27,8 @@ class Vector {
         T& get(int) const;
         void set(int, const T&);
         T&   remove(int);
-        int  currentSize() const;
-        int  maxSize() const;
+        int  count() const;
+        int  size() const;
         bool isUsed(int) const;
         bool isEmpty() const;
         bool isValid(int) const;

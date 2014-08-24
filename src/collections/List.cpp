@@ -9,7 +9,6 @@ List<T>::List() {
 template<class T>
 List<T>::List(const T& elem) {
     this->_first = new struct Node<T>(elem);
-    //this->_first->current = elem;
     this->_first->prev = NULL;
     this->_first->next = NULL;
     this->_size = 0;
@@ -27,12 +26,10 @@ List<T>::List(const List& list) {
     this->_first = new Node<T>(toCopy->current);
     newNode = this->_first;
     newNode->prev = NULL;
-    //newNode->current = toCopy->current;
 
     while(toCopy = toCopy->next) {
         newNode->next = new Node<T>(toCopy->current);
         newNode->next->prev = newNode;
-        //newNode->next->current = toCopy->current;
         newNode = newNode->next;
     }
     newNode->next = NULL;
@@ -63,7 +60,14 @@ void List<T>::add(const T& elem) {
 
 template<class T>
 const T& List<T>::get(int index) const {
-	// TODO Implement that
+	this->validate(index);
+	int i = 0;
+	struct Node<T>* current = this->_first;
+	while(i < index) {
+		current = current->next;
+		++i;
+	}
+	return current->current;
 }
 
 template<class T>
@@ -79,7 +83,7 @@ void List<T>::remove(int index) {
 
 template<class T>
 bool List<T>::isEmpty() const {
-    return this->_first == NULL;
+    return this->_size == 0;
 }
 
 template<class T>
