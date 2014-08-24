@@ -50,39 +50,30 @@ istream& operator>>(istream& s, Regatta& r) {
 }
 
 void Regatta::save(ostream& os) const {
-	int time = this->start.getTime();
-	bool date = this->start.isDate();
-	float modelSize = this->object->getModel().getSize();
-	StringUtils::write(os, this->raceName);
-	os.write((char*) &time, sizeof(int));
-	os.write((char*) &date, sizeof(bool));
-	StringUtils::write(os, this->location);
-	StringUtils::write(os, this->name);
-	StringUtils::write(os, this->object->getIdentifier());
-	StringUtils::write(os, this->object->getModel().getManufacturer());
-	StringUtils::write(os, this->object->getModel().getModel());
-	os.write((char*) &modelSize, sizeof(float));
+	StreamUtils::write(os, this->raceName);
+	StreamUtils::write(os, this->start.getTime());
+	StreamUtils::write(os, this->start.isDate());
+	StreamUtils::write(os, this->location);
+	StreamUtils::write(os, this->name);
+	StreamUtils::write(os, this->object->getIdentifier());
+	StreamUtils::write(os, this->object->getModel().getManufacturer());
+	StreamUtils::write(os, this->object->getModel().getModel());
+	StreamUtils::write(os, this->object->getModel().getSize());
 }
+
 void Regatta::load(istream& is) {
+	this->raceName = StreamUtils::readString(is);
+	this->start.setTime(StreamUtils::readInt(is));
 
-	this->raceName = StringUtils::read(is);
+	this->start.setDate(StreamUtils::readBool(is));
 
-	int time;
-	is.read((char*) &time, sizeof(int));
-	this->start.setTime(time);
+	this->location = StreamUtils::readString(is);
+	this->name     = StreamUtils::readString(is);
+	this->object->setIdentifier(StreamUtils::readString(is));
 
-	bool date;
-	is.read((char*) &date, sizeof(bool));
-	this->start.setDate(date);
-
-	this->location = StringUtils::read(is);
-	this->name     = StringUtils::read(is);
-	this->object->setIdentifier(StringUtils::read(is));
-
-	string manufacturer = StringUtils::read(is);
-	string model        = StringUtils::read(is);
-	float modelSize;
-	is.read((char*) &modelSize, sizeof(float));
+	string manufacturer = StreamUtils::readString(is);
+	string model        = StreamUtils::readString(is);
+	float modelSize     = StreamUtils::readFloat(is);
 
 	this->object->setModel(FloatingObjectModel(manufacturer, model, modelSize));
 }

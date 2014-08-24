@@ -14,9 +14,6 @@ class StringUtils {
         static string toString(float);
         static string toString(bool);
 
-        static void write(ostream&, const string&);
-        static string read(istream&);
-
 };
 
 #endif

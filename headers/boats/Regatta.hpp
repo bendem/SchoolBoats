@@ -6,7 +6,7 @@
 #include "boats/Activity.hpp"
 #include "boats/FloatingObject.hpp"
 #include "time/Moment.hpp"
-#include "utils/StringUtils.hpp"
+#include "utils/StreamUtils.hpp"
 
 class Regatta : public Activity {
 
