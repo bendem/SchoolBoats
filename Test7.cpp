@@ -71,12 +71,12 @@ void Essai1()  // Attention : utilisez les flux bytes (read et write) !!!!
 	cout << endl;
 
 	cout << "----- Sauvegarde de la regate dans le fichier LesVoilesDAntibes.dat -----" << endl;
-	ofstream fichier1("./data/LesVoilesDAntibes.dat",ios::out);
+	ofstream fichier1("./data/LesVoilesDAntibes.dat", ios::out);
 	r.save(fichier1);
 	fichier1.close();
 
 	cout << "----- Chargement de la regate situee dans le fichier LesVoilesDAntibes.dat -----" << endl;
-	ifstream fichier2("./data/LesVoilesDAntibes.dat",ios::in);
+	ifstream fichier2("./data/LesVoilesDAntibes.dat", ios::in);
 	Regatta r2;
 	r2.load(fichier2);
 	fichier2.close();
@@ -85,7 +85,7 @@ void Essai1()  // Attention : utilisez les flux bytes (read et write) !!!!
 }
 
 /*********************************************************************************************/
-void Essai2() {/*
+void Essai2() {
 	cout << "----- 2. Test de FichierRegates : creation du fichier avec quelques regates -----" << endl;
 
 	Regatta r1(
@@ -117,37 +117,37 @@ void Essai2() {/*
 		Moment(2013,10,13,13,10)
 	);
 
-	RegattaFile fichier("data/Regates.dat");
+	RegattaFile fichier("./data/Regates.dat");
 	fichier.save(r1);
 	fichier.save(r2);
 	fichier.save(r3);
-	fichier.save(r4);*/
+	fichier.save(r4);
 }
 
 /*********************************************************************************************/
-void Essai3() {/*
+void Essai3() {
 	cout << "-----  3. Test de FichierRegates : Listing (cout) des regates presentes dans le fichier -----" << endl;
-	RegattaFile fichier("data/Regates.dat");
-	fichier.list();  // n'affiche que sur le cout... ooouuhh!!!*/
+	RegattaFile fichier("./data/Regates.dat");
+	fichier.list();  // n'affiche que sur le cout... ooouuhh!!!
 }
 
 /*********************************************************************************************/
-void Essai4() {/*
+void Essai4() {
 	cout << "----- 4. Test de FichierRegates : Ajout d'une regate au fichier existant -----" << endl;
 
 	Regatta r("Catamaran Cup 2013","Baie des noyes,Ostende",FloatingObject("AZ-1234",FloatingObjectModel::HOBIE_14),"Catamaran Cup",Moment(2013,11,20,14,0));
 
-	RegattaFile fichier("data/Regates.dat");
+	RegattaFile fichier("./data/Regates.dat");
 	fichier.save(r);
-	fichier.list();*/
+	fichier.list();
 }
 
 /*********************************************************************************************/
-void Essai5() {/*
+void Essai5() {
 	cout << "----- 5. Test de FichierRegattas : Recherche d'une regate dans le fichier -----" << endl;
 	Regatta r;
 
-	RegattaFile fichier("data/Regates.dat");
+	RegattaFile fichier("./data/Regates.dat");
 
 	int ret = fichier.search(r, "La coupe des naufrages");   // Pour bien faire, r doit etre passe par...
 	if (ret == 0) {
@@ -165,5 +165,5 @@ void Essai5() {/*
 		r.display();
 	} else {
 		cout << "-----> Regate NON trouvee !!! <-----" << endl;
-	}*/
+	}
 }

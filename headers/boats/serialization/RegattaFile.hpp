@@ -2,6 +2,7 @@
 #define REGATTAFILE_HPP
 
 #include <iostream>
+#include <fstream>
 #include <string>
 #include "boats/Regatta.hpp"
 

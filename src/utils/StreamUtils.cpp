@@ -3,7 +3,7 @@
 void StreamUtils::write(ostream& os, const string& str) {
 	int n = str.size();
 	os.write((char*) &n, sizeof(int));
-	os.write(str.c_str(), n);
+	os.write(str.c_str(), sizeof(char) * n);
 }
 
 void StreamUtils::write(ostream& os, bool b) {
