@@ -1,8 +1,9 @@
-.codelite/*
-.clang/*
-.idea/*
-nbproject/*
-target/*
+.codelite/
+.clang/
+.idea/
+data/
+nbproject/
+target/
 *.project
 *.workspace
 *.stackdump
