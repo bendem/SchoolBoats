@@ -8,8 +8,8 @@ List<T>::List() {
 
 template<class T>
 List<T>::List(const T& elem) {
-    this->_first = new struct Node<T>;
-    this->_first->current = elem;
+    this->_first = new struct Node<T>(elem);
+    //this->_first->current = elem;
     this->_first->prev = NULL;
     this->_first->next = NULL;
     this->_size = 0;
@@ -24,15 +24,15 @@ List<T>::List(const List& list) {
     struct Node<T>* toCopy = list._first;
     struct Node<T>* newNode;
 
-    this->_first = new Node<T>;
+    this->_first = new Node<T>(toCopy->current);
     newNode = this->_first;
     newNode->prev = NULL;
-    newNode->current = toCopy->current;
+    //newNode->current = toCopy->current;
 
     while(toCopy = toCopy->next) {
-        newNode->next = new Node<T>;
+        newNode->next = new Node<T>(toCopy->current);
         newNode->next->prev = newNode;
-        newNode->next->current = toCopy->current;
+        //newNode->next->current = toCopy->current;
         newNode = newNode->next;
     }
     newNode->next = NULL;
@@ -45,6 +45,20 @@ List<T>::~List() {
     while(!this->isEmpty()) {
         this->remove(0);
     }
+}
+
+template<class T>
+void List<T>::add(const T& elem) {
+	// Adds elements to the start of the List
+	struct Node<T>* node = new Node<T>(elem);
+	//node->current = elem;
+	node->next = this->_first;
+	node->prev = NULL;
+	if(this->_first != NULL) {
+		node->next->prev = node;
+	}
+	this->_first = node;
+	++this->_size;
 }
 
 template<class T>
@@ -65,7 +79,7 @@ void List<T>::remove(int index) {
 
 template<class T>
 bool List<T>::isEmpty() const {
-    return this->_first = NULL;
+    return this->_first == NULL;
 }
 
 template<class T>
@@ -80,6 +94,17 @@ int List<T>::size() const {
 template<class T>
 bool List<T>::isValid(int index) const {
     return index >= 0 && index < this->_size;
+}
+
+template<class T>
+void List<T>::display() const {
+	cout << "[ ";
+	struct Node<T>* cur = this->_first;
+	while(cur != NULL) {
+		cout << cur->current << " ";
+		cur = cur->next;
+	}
+    cout << "]";
 }
 
 template<class T>

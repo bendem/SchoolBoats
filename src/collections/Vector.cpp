@@ -37,6 +37,13 @@ Vector<T>::~Vector() {
     delete[] this->_indexes;
 }
 
+template<class T>
+void Vector<T>::validate(int index) const {
+    if(!this->isValid(index)) {
+        throw OutOfBoundsException("Index out of bounds: " + StringUtils::toString(index));
+    }
+}
+
 /**
  * Gets the element at the specified index
  * @param index
@@ -69,11 +76,12 @@ void Vector<T>::set(int index, const T& value) {
  * Removes an item from the vector, if none was there, does nothing
  */
 template<class T>
-void Vector<T>::remove(int index) {
+T& Vector<T>::remove(int index) {
     this->validate(index);
     if(this->_indexes[index]) {
         --this->_used;
         this->_indexes[index] = false;
+        return this->_values[index];
     }
 }
 
@@ -124,10 +132,29 @@ bool Vector<T>::isValid(int index) const {
 }
 
 template<class T>
-void Vector<T>::validate(int index) const {
-    if(!this->isValid(index)) {
-        throw OutOfBoundsException("Index out of bounds: " + StringUtils::toString(index));
+void Vector<T>::display() const {
+	cout << "[ ";
+    for(int i; i < this->_size; ++i) {
+        if(this->_indexes[i]) {
+            cout << this->_values[i] << " ";
+        } else {
+            cout << "- ";
+        }
     }
+    cout << "]";
+}
+
+template<class T>
+Vector<T>& Vector<T>::operator+(const T& elem) {
+	bool added = false;
+    for(int i; i < this->_size && !added; ++i) {
+        if(!this->_indexes[i]) {
+            this->_indexes[i] = true;
+            this->_values[i] = elem;
+            return *this;
+        }
+    }
+    throw OutOfBoundsException("Vector is full");
 }
 
 // Pre setting template usage

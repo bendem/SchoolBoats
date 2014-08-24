@@ -79,17 +79,18 @@ void Essai1()
     if (vec.isValid(2) && vec.isUsed(2)) {
         int val = vec.get(2);
         cout << "Element recupere = " << val << endl;
-    }
-    else
+    } else {
         cout << "Case non occupee ou indice invalide !" << endl;
+    }
     cout << endl;
 
     cout << "On recupere l'element d'indice 3 (sans le retirer !!!)" << endl;
     if (vec.isValid(3) && vec.isUsed(3)) {   // ce serait beau de gerer ceci avec des exceptions... :-)
         int val= vec.get(3);
         cout << "Element recupere = " << val << endl;
+    } else {
+        cout << "Case non occupee ou indice invalide !" << endl;
     }
-    else cout << "Case non occupee ou indice invalide !" << endl;
     cout << endl;
     vec.display();                                         // --> -- -- 34 -- 71
     cout << endl;
@@ -98,12 +99,11 @@ void Essai1()
     if (vec.isValid(2) && vec.isUsed(2)) {  // ce serait beau de gerer ceci avec des exceptions... :-)
         int val = vec.remove(2);
         cout << "Element recupere = " << val << endl;
-    }
-    else
+    } else {
         cout << "Case non occupee ou indice invalide !" << endl;
-    cout << endl;
+    }
     vec.display();                                         // --> -- -- -- -- 71
-    cout << endl;
+    cout << endl << endl;
 
     cout << "On ajoute 43 en utilisant l'operateur +" << endl;
     // operator+ : Ajout dans la premiere case libre du vecteur
@@ -146,7 +146,7 @@ void Essai2() {
     cout << "L'element d'indice 2 devient Planche a voile AS2013" << endl;
     if (vec.isValid(2))
         vec.set(2, s1);
-    vec.display();           /* /!\/!\ SEG FAULT /!\/!\ */
+    vec.display();
     cout << endl;
 
     cout << "L'element d'indice 4 devient Catamaran A43" << endl;
@@ -202,7 +202,7 @@ void Essai2() {
 
 /*********************************************************************************************/
 void Essai3()
-{
+{/*
     cout << "----- 3. Test du template ListeTriee avec des entiers ----------------------" << endl;
     OrderedList<int> liste;
     liste.display();
@@ -251,7 +251,7 @@ void Essai3()
     cout << "On insere 13..." << endl;
     liste.add(13);
     liste.display();
-    cout << endl;
+    cout << endl;*/
 }
 
 

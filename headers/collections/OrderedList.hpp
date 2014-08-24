@@ -9,6 +9,8 @@ class OrderedList : public List<T> {
 	protected:
 		int _mode;
 
+		static int compare(const T&, const T&);
+
 	public:
 
         void add(const T&);

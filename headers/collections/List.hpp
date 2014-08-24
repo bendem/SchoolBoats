@@ -1,14 +1,20 @@
 #ifndef LIST_HPP
 #define LIST_HPP
 
+#include <iostream>
 #include "exceptions/OutOfBoundsException.hpp"
 #include "utils/StringUtils.hpp"
 
+using namespace std;
+
 template<class T>
 struct Node {
+	// Prevents initialization errors because references needs to be declared
+	Node(const T& cur) : current(cur) {}
+
     struct Node* prev;
     struct Node* next;
-    T& current;
+    const T& current;
 };
 
 template<class T>
@@ -27,7 +33,7 @@ class List {
         ~List();
 
         // abstract, need to be added in subclasses
-        virtual void add(const T&) = 0;
+        virtual void add(const T&);
         const T& get(int) const;
         bool isEmpty() const;
         int size() const;

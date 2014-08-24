@@ -50,6 +50,16 @@ Course& Course::operator=(const Course& c) {
     return *this;
 }
 
+bool Course::operator>(const Course& c) const {
+	// TODO implement this
+}
+bool Course::operator<(const Course& c) const {
+	// TODO implement this
+}
+bool Course::operator==(const Course& c) const {
+	// TODO implement this
+}
+
 ostream& operator<<(ostream& s, const Course& c) {
     return s << c.toString();
 }
