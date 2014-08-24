@@ -1,8 +1,3 @@
-/*
- * File:   StringUtils.hpp
- * Author: bendem
- */
-
 #ifndef STRINGUTILS_HPP
 #define STRINGUTILS_HPP
 
@@ -21,5 +16,5 @@ class StringUtils {
 
 };
 
-#endif  /* STRINGUTILS_HPP */
+#endif
 

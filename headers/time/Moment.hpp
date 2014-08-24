@@ -1,5 +1,5 @@
-#ifndef MOMENT_H
-#define MOMENT_H
+#ifndef MOMENT_HPP
+#define MOMENT_HPP
 
 #include <iostream>
 #include <string>

@@ -1,5 +1,5 @@
-#ifndef OUTOFBOUNDSEXCEPTION_H
-#define OUTOFBOUNDSEXCEPTION_H
+#ifndef OUTOFBOUNDSEXCEPTION_HPP
+#define OUTOFBOUNDSEXCEPTION_HPP
 
 #include <string>
 #include "exceptions/Exception.hpp"

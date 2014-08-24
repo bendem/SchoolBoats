@@ -1,5 +1,5 @@
-#ifndef INVALIDDATEEXCEPTION_H
-#define INVALIDDATEEXCEPTION_H
+#ifndef INVALIDDATEEXCEPTION_HPP
+#define INVALIDDATEEXCEPTION_HPP
 
 #include <string>
 #include "exceptions/Exception.hpp"

@@ -1,5 +1,5 @@
-#ifndef COURSE_H
-#define COURSE_H
+#ifndef COURSE_HPP
+#define COURSE_HPP
 
 #include <iostream>
 #include <string>

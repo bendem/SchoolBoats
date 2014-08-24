@@ -1,5 +1,5 @@
-#ifndef PLANNING_H
-#define PLANNING_H
+#ifndef PLANNING_HPP
+#define PLANNING_HPP
 
 #include <iostream>
 #include <string>

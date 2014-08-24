@@ -1,5 +1,5 @@
-#ifndef ACTIVITY_H
-#define ACTIVITY_H
+#ifndef ACTIVITY_HPP
+#define ACTIVITY_HPP
 
 #include <istream>
 #include <string>

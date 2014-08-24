@@ -1,5 +1,5 @@
-#ifndef REGATTA_H
-#define REGATTA_H
+#ifndef REGATTA_HPP
+#define REGATTA_HPP
 
 #include <iostream>
 #include <string>

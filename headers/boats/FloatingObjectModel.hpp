@@ -1,5 +1,5 @@
-#ifndef FLOATINGOBJECTMODEL_H
-#define FLOATINGOBJECTMODEL_H
+#ifndef FLOATINGOBJECTMODEL_HPP
+#define FLOATINGOBJECTMODEL_HPP
 
 #include <iostream>
 #include <string>

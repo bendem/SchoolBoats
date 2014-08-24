@@ -1,5 +1,5 @@
-#ifndef INVALIDARGUMENTEXCEPTION_H
-#define INVALIDARGUMENTEXCEPTION_H
+#ifndef INVALIDARGUMENTEXCEPTION_HPP
+#define INVALIDARGUMENTEXCEPTION_HPP
 
 #include <string>
 #include "exceptions/Exception.hpp"

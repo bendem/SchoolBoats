@@ -1,5 +1,5 @@
-#ifndef NOTADATEEXCEPTION_H
-#define NOTADATEEXCEPTION_H
+#ifndef NOTADATEEXCEPTION_HPP
+#define NOTADATEEXCEPTION_HPP
 
 #include <string>
 #include "exceptions/Exception.hpp"
