@@ -114,6 +114,11 @@ int Moment::getSecond() const {
 
 bool Moment::isDate() const { return this->date; }
 
+// These 3 are only there for serialization...
+int Moment::getTime() const { return this->time; }
+void Moment::setTime(int time) { this->time = time; }
+void Moment::setDate(bool date) { this->date = date; }
+
 Moment& Moment::operator=(const Moment& m) {
     this->time= m.time;
     this->date = m.date;

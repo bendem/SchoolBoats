@@ -6,6 +6,7 @@
 #include "boats/Activity.hpp"
 #include "boats/FloatingObject.hpp"
 #include "time/Moment.hpp"
+#include "utils/StringUtils.hpp"
 
 class Regatta : public Activity {
 
@@ -29,6 +30,10 @@ class Regatta : public Activity {
         Regatta& operator=(const Regatta&);
         friend ostream& operator<<(ostream&, const Regatta&);
         friend istream& operator>>(istream&, Regatta&);
+
+        // Serialization
+        void save(ostream&) const;
+        void load(istream&);
 
 };
 

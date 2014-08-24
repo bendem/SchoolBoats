@@ -45,6 +45,11 @@ class Moment {
 
         bool isDate() const;
 
+        // These 3 are only there for serialization...
+        int getTime() const;
+        void setTime(int);
+        void setDate(bool);
+
         Moment& operator=(const Moment&);
         Moment operator+(const Moment&) const;
         Moment operator+(const int) const;
