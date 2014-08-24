@@ -93,7 +93,7 @@ void Essai1() {
     r2.display();
     cout << endl << endl;
 
-    /*cout << "----- 1.4 Allocation dynamique de Regate avec pointeur de type Activity (Upcasting) -----" << endl;
+    cout << "----- 1.4 Allocation dynamique de Regate avec pointeur de type Activity (Upcasting) -----" << endl;
     Activity *p2 = new Regatta(r2);
     p2->display();  // Quelle methode Affiche est appelee ? celle de Activity ou de Regate ?
     delete p2;      // Quel destructeur est appele ? celui de Activity ou de Regate ?
@@ -110,7 +110,7 @@ void Essai1() {
     Regatta r4;
     cout << "--> Execution du code r4 = r3; :" << endl;
     r4 = r3;
-    cout << "--> r4 = " << r4 << endl;*/
+    cout << "--> r4 = " << r4 << endl;
 }
 
 /***********************************************************************************************/

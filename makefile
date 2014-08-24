@@ -16,7 +16,7 @@ OUT_DIRS:=$(SRC_DIRS:$(SRC)%=$(OUT)%)
 .PHONY: build clean debug mkdir
 .SILENT:
 
-build: $(OUT)/application $(OUT)/Test2 $(OUT)/Test3 $(OUT)/Test4
+build: $(OUT)/application $(OUT)/Test2 $(OUT)/Test3 $(OUT)/Test4 $(OUT)/Test5
 
 $(OUT)/application: main.cpp $(OBJ)
 	echo Compiling $@...
