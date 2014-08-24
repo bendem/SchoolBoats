@@ -126,7 +126,7 @@ void Essai1()
 void Essai2() {
     cout << "----- 2. Test du template Vecteur avec des objets de la classe Stage -------------" << endl;
     cout << "Creation d'un vecteur de 7 cases..." << endl;
-    Vector<Stage> vec(7);
+    Vector<Course> vec(7);
     vec.display();
     cout << endl;
 
@@ -157,7 +157,7 @@ void Essai2() {
 
     cout << "On recupere l'element d'indice 2 (sans le retirer !!!)" << endl;
     if (vec.isValid(2) && vec.isUsed(2)) {
-        Stage s = vec.get(2);
+        Course s = vec.get(2);
         cout << "Element recupere = " << s << endl;
     }
     else cout << "Case non occupee ou indice invalide !" << endl;
@@ -165,7 +165,7 @@ void Essai2() {
 
     cout << "On recupere l'element d'indice 3 (sans le retirer !!!)" << endl;
     if (vec.isValid(3) && vec.isUsed(3)) {
-        Stage s = vec.get(3);
+        Course s = vec.get(3);
         cout << "Element recupere = " << s << endl;
     }
     else
@@ -177,7 +177,7 @@ void Essai2() {
 
     cout << "On retire l'element d'indice 2" << endl;
     if (vec.isValid(2) && vec.isUsed(2)) {
-        Stage s = vec.remove(2);
+        Course s = vec.remove(2);
         cout << "Element recupere = " << s << endl;
     }
     else

@@ -88,3 +88,9 @@ void List<T>::validate(int index) const {
         throw OutOfBoundsException("Index out of bounds: " + StringUtils::toString(index));
     }
 }
+
+// Pre setting template usage
+template class List<int>;
+
+#include "boats/Course.hpp"
+template class List<Course>;

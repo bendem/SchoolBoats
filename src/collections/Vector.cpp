@@ -132,3 +132,6 @@ void Vector<T>::validate(int index) const {
 
 // Pre setting template usage
 template class Vector<int>;
+
+#include "boats/Course.hpp"
+template class Vector<Course>;
