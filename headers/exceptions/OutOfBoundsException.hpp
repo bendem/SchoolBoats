@@ -4,7 +4,7 @@
 #include <string>
 #include "exceptions/Exception.hpp"
 
-class OutOfBoundsException : Exception {
+class OutOfBoundsException : public Exception {
 
     public:
         OutOfBoundsException();
