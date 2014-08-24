@@ -96,6 +96,15 @@ int Vector<T>::maxSize() const {
  * @return
  */
 template<class T>
+bool Vector<T>::isUsed(int index) const {
+    return this->_indexes[index];
+}
+
+/**
+ * Returns wether the vector is empty or not
+ * @return
+ */
+template<class T>
 bool Vector<T>::isEmpty() const {
     for (int i = 0; i < this->_size; i++) {
         if(this->_indexes[i]) {

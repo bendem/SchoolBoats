@@ -1,7 +1,6 @@
 #ifndef VECTOR_HPP
 #define VECTOR_HPP
 
-#include <string>
 #include "exceptions/InvalidArgumentException.hpp"
 #include "exceptions/OutOfBoundsException.hpp"
 #include "utils/StringUtils.hpp"
@@ -27,8 +26,11 @@ class Vector {
         void remove(int);
         int  currentSize() const;
         int  maxSize() const;
+        bool isUsed(int) const;
         bool isEmpty() const;
         bool isValid(int) const;
+
+        // TODO Operators!
 };
 
 #endif

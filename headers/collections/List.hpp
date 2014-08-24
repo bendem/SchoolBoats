@@ -2,6 +2,7 @@
 #define LIST_HPP
 
 #include "exceptions/OutOfBoundsException.hpp"
+#include "utils/StringUtils.hpp"
 
 template<class T>
 struct Node {
