@@ -44,9 +44,7 @@ Vector<T>::~Vector() {
  */
 template<class T>
 T& Vector<T>::get(int index) const {
-    if(index >= this->_size) {
-        throw OutOfBoundsException("Index too big: " + StringUtils::toString(index));
-    }
+    this->validate(index);
     if(!this->_indexes[index]) {
         throw InvalidArgumentException("No element at " + StringUtils::toString(index));
     }
@@ -107,9 +105,18 @@ bool Vector<T>::isEmpty() const {
     return true;
 }
 
+/**
+ * Checks wether an index is valid or not
+ * @return
+ */
+template<class T>
+bool Vector<T>::isValid(int index) const {
+    return index >= 0 && index < this->_size;
+}
+
 template<class T>
 void Vector<T>::validate(int index) const {
-    if(index >= this->_size) {
+    if(!this->isValid(index)) {
         throw OutOfBoundsException("Index out of bounds: " + StringUtils::toString(index));
     }
 }

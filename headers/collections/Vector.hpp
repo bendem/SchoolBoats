@@ -16,6 +16,7 @@ class Vector {
         int   _used;
 
         void validate(int) const;
+
     public:
         Vector(int);
         Vector(const Vector& orig);
@@ -27,6 +28,7 @@ class Vector {
         int  currentSize() const;
         int  maxSize() const;
         bool isEmpty() const;
+        bool isValid(int) const;
 };
 
 #endif

@@ -2,28 +2,30 @@
 
 template<class T>
 List<T>::List() {
-    first = NULL;
+    this->_first = NULL;
+    this->_size = 0;
 }
 
 template<class T>
 List<T>::List(const T& elem) {
-    this->first = new struct Node<T>;
-    this->first->current = elem;
-    this->first->prev = NULL;
-    this->first->next = NULL;
+    this->_first = new struct Node<T>;
+    this->_first->current = elem;
+    this->_first->prev = NULL;
+    this->_first->next = NULL;
+    this->_size = 0;
 }
 
 template<class T>
 List<T>::List(const List& list) {
-    if(list.empty()) {
+    if(list.isEmpty()) {
         return;
     }
 
-    struct Node<T>* toCopy = list.first;
+    struct Node<T>* toCopy = list._first;
     struct Node<T>* newNode;
 
-    this->first = new Node<T>;
-    newNode = this->first;
+    this->_first = new Node<T>;
+    newNode = this->_first;
     newNode->prev = NULL;
     newNode->current = toCopy->current;
 
@@ -34,37 +36,55 @@ List<T>::List(const List& list) {
         newNode = newNode->next;
     }
     newNode->next = NULL;
+
+    this->_size = list._size;
 }
 
 template<class T>
 List<T>::~List() {
-    while(!this->empty()) {
+    while(!this->isEmpty()) {
         this->remove(0);
     }
 }
 
 template<class T>
+const T& List<T>::get(int index) const {
+	// TODO Implement that
+}
+
+template<class T>
 void List<T>::remove(int index) {
-    if(empty()) {
-        throw OutOfBoundsException("No element to remove.");
-    }
-    struct Node<T>* lol = this->first->next;
-    delete this->first;
-    this->first = lol;
+    this->validate(index);
+
+    // TODO Don't remove the first one only
+    struct Node<T>* tmp = this->_first->next;
+    delete this->_first;
+    this->_first = tmp;
+    --this->_size;
 }
 
 template<class T>
-bool List<T>::empty() {
-    return this->first = NULL;
+bool List<T>::isEmpty() const {
+    return this->_first = NULL;
 }
 
 template<class T>
-int List<T>::size() {
-    int i = 0;
-    struct Node<T>* current = first;
-    while(current != NULL) {
-        ++i;
-        current = current->next;
+int List<T>::size() const {
+    return this->_size;
+}
+
+/**
+ * Checks wether an index is valid or not
+ * @return
+ */
+template<class T>
+bool List<T>::isValid(int index) const {
+    return index >= 0 && index < this->_size;
+}
+
+template<class T>
+void List<T>::validate(int index) const {
+    if(!this->isValid(index)) {
+        throw OutOfBoundsException("Index out of bounds: " + StringUtils::toString(index));
     }
-    return i;
 }
