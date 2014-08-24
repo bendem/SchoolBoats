@@ -8,6 +8,11 @@ Regatta::Regatta(string name, string location, const FloatingObject& object, str
     this->start = start;
 }
 
+Regatta::Regatta(const Regatta& regatta) : Activity(regatta) {
+	this->raceName = regatta.raceName;
+	this->start = regatta.start;
+}
+
 string Regatta::getRaceName() const {
     return this->raceName;
 }

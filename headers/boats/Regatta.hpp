@@ -16,6 +16,7 @@ class Regatta : public Activity {
     public:
         Regatta();
         Regatta(string, string, const FloatingObject&, string, const Moment&/*, unknown*/);
+        Regatta(const Regatta&);
 
         string getRaceName() const;
         const Moment& getStart() const;
