@@ -14,21 +14,82 @@
 
 using namespace std;
 
-int main(int argc, char** argv) {
-	User a("a", "a", Role::Admin);
-	cout << a << endl;
-	cout << User(a) << endl;
+void login();
+char menu(Role);
+void action(char);
 
+// Global stuff
+UserList userList(USER_FILE);
+User* currentUser;
+
+int main(int argc, char** argv) {
 	char choice;
-	User* currentUser;
-	UserList userList(USER_FILE);
 	userList.save(USER_FILE);
 
-	try {
-		cout << userList.search("a") << endl;
-	} catch(Exception e) {
-		cout << endl << e << endl;
+	login();
+	while(true) {
+		choice = menu(currentUser->getRole());
+		switch(choice) {
+			case 'Q':
+			case 'q':
+				return 0;
+			case 'N':
+			case 'n':
+				login();
+				break;
+			default:
+				action(choice);
+		}
 	}
 
     return 0;
+}
+
+void login() {
+	string login;
+	string password;
+
+	while(true) {
+		cout << endl << endl << endl;
+		cout << "***************************" << endl;
+		cout << "*   MySailingWord stuff   *" << endl;
+		cout << "***************************" << endl;
+		cout << "Entrez votre nom d'utilisateur: ";
+		cin >> login;
+		cout << "Entrez votre mot de passe: ";
+		cin >> password;
+
+		try {
+			currentUser = userList.search(login);
+		} catch(Exception e) {
+			cout << "Utilisateur inconnu!" << endl;
+			continue;
+		}
+
+		if(currentUser->checkPassword(password)) {
+			return;
+		} else {
+			cout << "Mot de passe incorrect!" << endl;
+		}
+	}
+}
+
+/**
+ * When this returns 0, quit
+ */
+char menu(Role role) {
+	string input;
+
+	cout << endl << "Menu " << (role == Role::Admin ? "administrateur" : "manager") << endl;
+	// TODO Menus
+
+	cout << "N. Nouvelle session" << endl;
+	cout << "Q. Quitter" << endl;
+
+
+	cin >> input;
+	return input.c_str()[0];
+}
+
+void action(char choice) {
 }

@@ -45,12 +45,12 @@ void UserList::save(ostream& os) const {
 	}
 }
 
-User& UserList::search(string login) const {
+User* UserList::search(string login) const {
 	User* u;
 	for(int i = 0; i < this->users->size(); ++i) {
 		u = this->users->get(i);
 		if(u->getLogin() == login) {
-			return *u;
+			return u;
 		}
 	}
 	throw Exception("User not found"); // TODO Make a new exception

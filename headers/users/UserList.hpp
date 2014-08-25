@@ -23,7 +23,7 @@ class UserList {
 		void load(istream&);
 		void save(string) const;
 		void save(ostream&) const;
-		User& search(string) const;
+		User* search(string) const;
 
 };
 
