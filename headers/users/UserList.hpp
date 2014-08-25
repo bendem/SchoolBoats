@@ -6,6 +6,7 @@
 #include <string>
 #include "collections/OrderedList.hpp"
 #include "users/User.hpp"
+#include "exceptions/DuplicatedUserException.hpp"
 
 using namespace std;
 
@@ -18,6 +19,8 @@ class UserList {
 		UserList(string);
 		UserList(const UserList&);
 		~UserList();
+
+		void add(User*);
 
 		void load(string);
 		void load(istream&);

@@ -23,6 +23,7 @@ class User {
 		Role getRole() const;
 		string getLogin() const;
 		bool checkPassword(string) const;
+		void setPassword(string);
 
 		bool operator>(const User&) const;
 		bool operator<(const User&) const;

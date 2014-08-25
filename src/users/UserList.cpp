@@ -16,6 +16,16 @@ UserList::~UserList() {
 	delete this->users;
 }
 
+void UserList::add(User* u) {
+	try {
+		this->search(u->getLogin());
+	} catch(Exception e) { // TODO Change that
+		this->users->add(u);
+		return;
+	}
+	throw DuplicatedUserException("Duplicated user login!");
+}
+
 void UserList::load(string filename) {
 	ifstream is(filename, ios::in);
 	this->load(is);

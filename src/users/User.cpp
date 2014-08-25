@@ -24,6 +24,10 @@ bool User::checkPassword(string toCheck) const {
 	return toCheck == this->password;
 }
 
+void User::setPassword(string pass) {
+	this->password = pass;
+}
+
 bool User::operator>(const User& u) const {
 	return this->login > u.login;
 }

@@ -88,7 +88,7 @@ char menu() {
 	if(currentUser->getRole() == Role::Admin) {
 		cout << "1. Afficher la liste des utilisateurs" << endl;
 		cout << "2. Afficher les infos d'un utilisateur" << endl;
-		cout << "3. Créer un utilisateur" << endl;
+		cout << "3. Creer un utilisateur" << endl;
 		cout << "4. Changer un mot de passe" << endl;
 	} else {
 	}
@@ -135,7 +135,40 @@ string askLogin() {
 }
 
 void addUser() {
+	string user, password;
+	Role role;
+	int iRole;
+
+	user = askLogin();
+	cout << "Entrez le mot de passe de l'utilisateur: ";
+	cin >> password;
+	cout << "Entrez le role de l'utilisateur (1. Admin, 2. Manager): ";
+	cin >> iRole;
+
+	role = static_cast<Role>(iRole);
+
+	try {
+		userList.add(new User(user, password, role));
+	} catch(DuplicatedUserException e) {
+		// Duplicated user login
+		cout << "Nom d'utilisateur deja utilise!" << endl;
+		return;
+	}
+	userList.save(USER_FILE);
 }
 
-void changePassword(string) {
+void changePassword(string login) {
+	User* u;
+	try {
+		u = userList.search(login);
+	} catch(Exception e) { // TODO Change that
+		cout << e << endl;
+		return;
+	}
+	// TODO Check previous password
+	string newPass;
+	cout << "Entrez le nouveau mot de passe: ";
+	cin >> newPass;
+	u->setPassword(newPass);
+	userList.save(USER_FILE);
 }
