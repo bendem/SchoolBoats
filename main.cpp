@@ -9,20 +9,17 @@
 #include "exceptions/UserNotFoundException.hpp"
 #include "users/User.hpp"
 #include "users/UserList.hpp"
+#include "utils/Menu.hpp"
 #include "utils/StringUtils.hpp"
 
 #define USER_FILE "./data/Users.dat"
 
 using namespace std;
 
-void login();
-char menu();
 void action(char);
 string askLogin();
 void addUser();
 void changePassword(string);
-void result(string);
-void wait();
 
 // Global stuff
 UserList userList(USER_FILE);
@@ -47,70 +44,6 @@ int main(int argc, char** argv) {
                 action(choice);
         }
     }
-}
-
-void login() {
-    string login;
-    string password;
-
-    while(true) {
-        cout << endl;
-        cout << "***************************" << endl;
-        cout << "*   MySailingWord stuff   *" << endl;
-        cout << "***************************" << endl;
-        cout << "Entrez votre nom d'utilisateur: ";
-        cin >> login;
-        cout << "Entrez votre mot de passe: ";
-        cin >> password;
-
-        try {
-            currentUser = userList.search(login);
-        } catch(Exception e) {
-            result("Utilisateur inconnu!");
-            continue;
-        }
-
-        if(currentUser->checkPassword(password)) {
-            return;
-        } else {
-            result("Mot de passe incorrect!");
-        }
-    }
-}
-
-char menu() {
-    char input;
-
-    cout << endl << string(70, '=') << endl << endl;
-    cout << "Menu " << (currentUser->getRole() == Role::Admin ? "administrateur" : "manager") << endl;
-    cout << string(55, '-') << endl;
-    if(currentUser->getRole() == Role::Admin) {
-        cout << "1. Afficher la liste des utilisateurs" << endl;
-        cout << "2. Afficher les infos d'un utilisateur" << endl;
-        cout << "3. Creer un utilisateur" << endl;
-        cout << "4. Changer un mot de passe" << endl;
-    } else {
-        cout << "1. Gerer les circuits" << endl;
-        cout << "\t1.1. Ajouter un circuit" << endl;
-        cout << "\t1.2. Ajouter un circuit a partir d'un fichier texte" << endl;
-        cout << "\t1.3. Afficher les donnees d'un circuit" << endl;
-        cout << "2. Gerer les regates" << endl;
-        cout << "\t2.1. Ajouter une regate" << endl;
-        cout << "\t2.2. Afficher la liste des regates" << endl;
-        cout << "\t2.3. Afficher une regate" << endl;
-        cout << "\t2.4. Supprimer une regate" << endl;
-        cout << "3. Gerer une regate" << endl;
-        cout << "\t3.1. Ajouter un concurrent" << endl;
-        cout << "\t3.2. Ajouter des concurrents depuis un fichier texte" << endl;
-        cout << "\t3.3. Lancer la regate" << endl;
-    }
-
-    cout << "N. Nouvelle session" << endl;
-    cout << "Q. Quitter" << endl;
-
-    cout << "Votre choix: ";
-    cin >> input;
-    return input;
 }
 
 void action(char choice) {
@@ -187,17 +120,4 @@ void changePassword(string login) {
     u->setPassword(newPass);
     userList.save(USER_FILE);
     result("Mot de passe change avec succes");
-}
-
-void result(string text) {
-    cout << endl << " => " << text << endl;
-    wait();
-}
-
-void wait() {
-    // flush
-    cin.sync();
-    cout << endl << " > Press enter to continue... <";
-    // send to the nowhereness
-    cin.ignore();
 }
