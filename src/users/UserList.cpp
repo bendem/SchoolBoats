@@ -55,3 +55,9 @@ User* UserList::search(string login) const {
 	}
 	throw Exception("User not found"); // TODO Make a new exception
 }
+
+void UserList::list() const {
+	for(int i = 0; i < this->users->size(); ++i) {
+		cout << *this->users->get(i);
+	}
+}

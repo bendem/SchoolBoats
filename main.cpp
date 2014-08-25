@@ -15,8 +15,11 @@
 using namespace std;
 
 void login();
-char menu(Role);
+char menu();
 void action(char);
+string askLogin();
+void addUser();
+void changePassword(string);
 
 // Global stuff
 UserList userList(USER_FILE);
@@ -28,7 +31,7 @@ int main(int argc, char** argv) {
 
 	login();
 	while(true) {
-		choice = menu(currentUser->getRole());
+		choice = menu();
 		switch(choice) {
 			case 'Q':
 			case 'q':
@@ -77,11 +80,18 @@ void login() {
 /**
  * When this returns 0, quit
  */
-char menu(Role role) {
+char menu() {
 	string input;
 
-	cout << endl << "Menu " << (role == Role::Admin ? "administrateur" : "manager") << endl;
-	// TODO Menus
+	// TODO Clearscreen?
+	cout << endl << "Menu " << (currentUser->getRole() == Role::Admin ? "administrateur" : "manager") << endl;
+	if(currentUser->getRole() == Role::Admin) {
+		cout << "1. Afficher la liste des utilisateurs" << endl;
+		cout << "2. Afficher les infos d'un utilisateur" << endl;
+		cout << "3. Créer un utilisateur" << endl;
+		cout << "4. Changer un mot de passe" << endl;
+	} else {
+	}
 
 	cout << "N. Nouvelle session" << endl;
 	cout << "Q. Quitter" << endl;
@@ -92,4 +102,40 @@ char menu(Role role) {
 }
 
 void action(char choice) {
+	// TODO Clearscreen?
+	if(currentUser->getRole() == Role::Admin) {
+		switch(choice) {
+			case '1':
+				userList.list();
+				break;
+			case '2':
+				try {
+					cout << *userList.search(askLogin()) << endl;
+				} catch(Exception e) {
+					cout << e << endl;
+				}
+				break;
+			case '3':
+				addUser();
+				break;
+			case '4':
+				changePassword(askLogin());
+				break;
+		}
+	} else {
+		// TODO Manager menu
+	}
+}
+
+string askLogin() {
+	string login;
+	cout << "Entrez le nom de l'utilisateur: ";
+	cin >> login;
+	return login;
+}
+
+void addUser() {
+}
+
+void changePassword(string) {
 }

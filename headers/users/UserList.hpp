@@ -25,6 +25,8 @@ class UserList {
 		void save(ostream&) const;
 		User* search(string) const;
 
+		void list() const;
+
 };
 
 #endif
