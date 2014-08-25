@@ -68,6 +68,6 @@ User* UserList::search(string login) const {
 
 void UserList::list() const {
     for(int i = 0; i < this->users->size(); ++i) {
-        cout << *this->users->get(i);
+        cout << *this->users->get(i) << endl;
     }
 }

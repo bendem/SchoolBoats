@@ -2,6 +2,7 @@
 #define TRACK_HPP
 
 #include <string>
+#include "boats/Point.hpp"
 #include "collections/Vector.hpp"
 
 class Track {

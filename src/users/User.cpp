@@ -47,7 +47,7 @@ const User& User::operator=(const User& u) {
 }
 
 ostream& operator<<(ostream& os, const User& u) {
-    return os << u.login << " (" << (u.role == Role::Admin ? "admin" : "manager") << ")";
+    return os << u.login << "\t (" << (u.role == Role::Admin ? "admin" : "manager") << ")";
 }
 
 void User::save(ostream& os) const {

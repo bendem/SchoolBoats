@@ -7,9 +7,9 @@ Track::Track(string name, int size) {
     this->points = new Vector<Point*>(size);
 }
 
-Track(const Track& orig) {
+Track::Track(const Track& orig) {
     this->name = orig.name;
-    this->points = new Vector<Point*>(orig.points);
+    this->points = new Vector<Point*>(*orig.points);
 }
 Track::~Track() {
     delete this->points;
@@ -18,9 +18,9 @@ Track::~Track() {
 string Track::getName() const {
     return this->name;
 }
-Point& getPoint(int index) const {
+Point& Track::getPoint(int index) const {
     return *this->points->get(index);
 }
-int getPointCount() const {
+int Track::getPointCount() const {
     return this->points->count();
 }

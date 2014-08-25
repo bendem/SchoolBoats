@@ -20,6 +20,8 @@ void action(char);
 string askLogin();
 void addUser();
 void changePassword(string);
+void result(string);
+void wait();
 
 // Global stuff
 UserList userList(USER_FILE);
@@ -44,8 +46,6 @@ int main(int argc, char** argv) {
                 action(choice);
         }
     }
-
-    return 0;
 }
 
 void login() {
@@ -53,7 +53,7 @@ void login() {
     string password;
 
     while(true) {
-        cout << endl << endl << endl;
+        cout << endl;
         cout << "***************************" << endl;
         cout << "*   MySailingWord stuff   *" << endl;
         cout << "***************************" << endl;
@@ -65,14 +65,14 @@ void login() {
         try {
             currentUser = userList.search(login);
         } catch(Exception e) {
-            cout << "Utilisateur inconnu!" << endl;
+            result("Utilisateur inconnu!");
             continue;
         }
 
         if(currentUser->checkPassword(password)) {
             return;
         } else {
-            cout << "Mot de passe incorrect!" << endl;
+            result("Mot de passe incorrect!");
         }
     }
 }
@@ -81,10 +81,11 @@ void login() {
  * When this returns 0, quit
  */
 char menu() {
-    string input;
+    char input;
 
-    // TODO Clearscreen?
-    cout << endl << "Menu " << (currentUser->getRole() == Role::Admin ? "administrateur" : "manager") << endl;
+    cout << endl << string(70, '=') << endl << endl;
+    cout << "Menu " << (currentUser->getRole() == Role::Admin ? "administrateur" : "manager") << endl;
+    cout << string(55, '-') << endl;
     if(currentUser->getRole() == Role::Admin) {
         cout << "1. Afficher la liste des utilisateurs" << endl;
         cout << "2. Afficher les infos d'un utilisateur" << endl;
@@ -111,14 +112,15 @@ char menu() {
 
     cout << "Votre choix: ";
     cin >> input;
-    return input.c_str()[0];
+    return input;
 }
 
 void action(char choice) {
-    // TODO Clearscreen?
+    cout << endl;
     if(currentUser->getRole() == Role::Admin) {
         switch(choice) {
             case '1':
+                cout << "Liste des utilisateur" << endl << string(55, '-') << endl;
                 userList.list();
                 break;
             case '2':
@@ -127,6 +129,7 @@ void action(char choice) {
                 } catch(Exception e) {
                     cout << e << endl;
                 }
+                wait();
                 break;
             case '3':
                 addUser();
@@ -165,9 +168,11 @@ void addUser() {
     } catch(DuplicatedUserException e) {
         // Duplicated user login
         cout << "Nom d'utilisateur deja utilise!" << endl;
+        wait();
         return;
     }
     userList.save(USER_FILE);
+    result("Utilisateur ajoute");
 }
 
 void changePassword(string login) {
@@ -184,4 +189,18 @@ void changePassword(string login) {
     cin >> newPass;
     u->setPassword(newPass);
     userList.save(USER_FILE);
+    result("Mot de passe change avec succes");
+}
+
+void result(string text) {
+    cout << endl << " => " << text << endl;
+    wait();
+}
+
+void wait() {
+    // flush
+    cin.sync();
+    cout << endl << " > Press enter to continue... <";
+    // send to the nowhereness
+    cin.ignore();
 }

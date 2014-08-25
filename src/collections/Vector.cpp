@@ -171,3 +171,6 @@ template class Vector<int>;
 
 #include "boats/Course.hpp"
 template class Vector<Course>;
+
+#include "boats/Point.hpp"
+template class Vector<Point*>;
