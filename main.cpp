@@ -16,7 +16,7 @@
 
 using namespace std;
 
-void action(char);
+void action(int);
 string askLogin();
 void addUser();
 void changePassword(string);
@@ -33,11 +33,9 @@ int main(int argc, char** argv) {
     while(true) {
         choice = menu();
         switch(choice) {
-            case 'Q':
-            case 'q':
+            case 0:
                 return 0;
-            case 'N':
-            case 'n':
+            case 8:
                 login();
                 break;
             default:
@@ -46,25 +44,25 @@ int main(int argc, char** argv) {
     }
 }
 
-void action(char choice) {
+void action(int choice) {
     cout << endl;
     if(currentUser->getRole() == Role::Admin) {
         switch(choice) {
-            case '1':
+            case 1:
                 cout << "Liste des utilisateur" << endl << string(55, '-') << endl;
                 userList.list();
                 break;
-            case '2':
+            case 2:
                 try {
                     cout << *userList.search(askLogin()) << endl;
                 } catch(UserNotFoundException e) {
                     result("Utilisateur non trouve");
                 }
                 break;
-            case '3':
+            case 3:
                 addUser();
                 break;
-            case '4':
+            case 4:
                 changePassword(askLogin());
                 break;
         }

@@ -29,8 +29,8 @@ void login() {
     }
 }
 
-char menu() {
-    char input;
+int menu() {
+    int input;
 
     cout << endl << string(70, '=') << endl << endl;
     cout << "Menu " << (currentUser->getRole() == Role::Admin ? "administrateur" : "manager") << endl;
@@ -56,8 +56,8 @@ char menu() {
         cout << "\t3.3. Lancer la regate" << endl;
     }
 
-    cout << "N. Nouvelle session" << endl;
-    cout << "Q. Quitter" << endl;
+    cout << "8. Nouvelle session" << endl;
+    cout << "0. Quitter" << endl;
 
     cout << "Votre choix: ";
     cin >> input;

@@ -174,3 +174,6 @@ template class Vector<Course>;
 
 #include "boats/Point.hpp"
 template class Vector<Point*>;
+
+#include <string>
+template class Vector<string>;

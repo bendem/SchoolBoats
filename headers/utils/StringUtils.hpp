@@ -3,8 +3,13 @@
 
 #include <string>
 #include <sstream>
+#include "collections/Vector.hpp"
 
 using namespace std;
+
+// Prevents circular include problems
+template<class T>
+class Vector;
 
 class StringUtils {
 
@@ -13,8 +18,8 @@ class StringUtils {
         static string toString(unsigned int);
         static string toString(float);
         static string toString(bool);
+        static Vector<string> cut(string, char);
 
 };
 
 #endif
-

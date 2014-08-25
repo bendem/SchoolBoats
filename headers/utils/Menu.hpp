@@ -12,7 +12,7 @@ extern User* currentUser;
 extern UserList userList;
 
 void login();
-char menu();
+int menu();
 void result(string);
 void wait();
 
