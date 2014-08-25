@@ -19,7 +19,7 @@ UserList::~UserList() {
 void UserList::add(User* u) {
     try {
         this->search(u->getLogin());
-    } catch(Exception e) { // TODO Change that
+    } catch(UserNotFoundException e) {
         this->users->add(u);
         return;
     }
@@ -63,7 +63,7 @@ User* UserList::search(string login) const {
             return u;
         }
     }
-    throw Exception("User not found"); // TODO Make a new exception
+    throw UserNotFoundException("User not found");
 }
 
 void UserList::list() const {

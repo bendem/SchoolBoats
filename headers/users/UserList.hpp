@@ -7,6 +7,7 @@
 #include "collections/OrderedList.hpp"
 #include "users/User.hpp"
 #include "exceptions/DuplicatedUserException.hpp"
+#include "exceptions/UserNotFoundException.hpp"
 
 using namespace std;
 

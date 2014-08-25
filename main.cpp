@@ -6,9 +6,10 @@
 #include "collections/Vector.hpp"
 #include "exceptions/InvalidArgumentException.hpp"
 #include "exceptions/OutOfBoundsException.hpp"
-#include "utils/StringUtils.hpp"
+#include "exceptions/UserNotFoundException.hpp"
 #include "users/User.hpp"
 #include "users/UserList.hpp"
+#include "utils/StringUtils.hpp"
 
 #define USER_FILE "./data/Users.dat"
 
@@ -126,10 +127,9 @@ void action(char choice) {
             case '2':
                 try {
                     cout << *userList.search(askLogin()) << endl;
-                } catch(Exception e) {
-                    cout << e << endl;
+                } catch(UserNotFoundException e) {
+                    result("Utilisateur non trouve");
                 }
-                wait();
                 break;
             case '3':
                 addUser();
@@ -179,7 +179,7 @@ void changePassword(string login) {
     User* u;
     try {
         u = userList.search(login);
-    } catch(Exception e) { // TODO Change that
+    } catch(UserNotFoundException e) {
         cout << e << endl;
         return;
     }

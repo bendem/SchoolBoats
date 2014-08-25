@@ -5,4 +5,3 @@ DuplicatedUserException::DuplicatedUserException(const string message) : Excepti
 DuplicatedUserException::DuplicatedUserException(const Exception* e) : Exception(e) {}
 DuplicatedUserException::DuplicatedUserException(const string message, const Exception* e) : Exception(message, e) {}
 DuplicatedUserException::DuplicatedUserException(const DuplicatedUserException& e) : Exception(e) {}
-

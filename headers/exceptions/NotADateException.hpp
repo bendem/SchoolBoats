@@ -15,4 +15,4 @@ class NotADateException : public Exception {
 
 };
 
-#endif // NOTADATEEXCEPTION_H
+#endif

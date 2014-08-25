@@ -15,5 +15,5 @@ class OutOfBoundsException : public Exception {
 
 };
 
-#endif  /* OUTOFBOUNDSEXCEPTION_H */
+#endif
 

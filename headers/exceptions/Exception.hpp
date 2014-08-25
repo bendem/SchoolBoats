@@ -27,5 +27,5 @@ class Exception {
 
 ostream& operator<<(ostream&, const Exception&);
 
-#endif  /* EXCEPTION_HPP */
+#endif
 
