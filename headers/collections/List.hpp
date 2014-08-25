@@ -9,12 +9,9 @@ using namespace std;
 
 template<class T>
 struct Node {
-	// Prevents initialization errors because references needs to be declared
-	Node(const T& cur) : current(cur) {}
-
     struct Node* prev;
     struct Node* next;
-    const T& current;
+    T current;
 };
 
 template<class T>
@@ -28,7 +25,7 @@ class List {
 
     public:
         List();
-        List(const T&);
+        List(T);
         List(const List&);
         ~List();
 
@@ -37,7 +34,7 @@ class List {
         const T& get(int) const;
         bool isEmpty() const;
         int size() const;
-        void remove(int);
+        T remove(int);
 		bool isValid(int) const;
         void display() const;
 

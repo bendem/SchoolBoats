@@ -7,8 +7,9 @@ List<T>::List() {
 }
 
 template<class T>
-List<T>::List(const T& elem) {
-    this->_first = new struct Node<T>(elem);
+List<T>::List(T elem) {
+    this->_first = new struct Node<T>;
+    this->_first->current = elem;
     this->_first->prev = NULL;
     this->_first->next = NULL;
     this->_size = 0;
@@ -23,12 +24,14 @@ List<T>::List(const List& list) {
     struct Node<T>* toCopy = list._first;
     struct Node<T>* newNode;
 
-    this->_first = new Node<T>(toCopy->current);
+    this->_first = new Node<T>;
+    this->_first->current = toCopy->current;
     newNode = this->_first;
     newNode->prev = NULL;
 
     while(toCopy = toCopy->next) {
-        newNode->next = new Node<T>(toCopy->current);
+        newNode->next = new Node<T>;
+        newNode->current = toCopy->current;
         newNode->next->prev = newNode;
         newNode = newNode->next;
     }
@@ -47,8 +50,8 @@ List<T>::~List() {
 template<class T>
 void List<T>::add(const T& elem) {
 	// Adds elements to the start of the List
-	struct Node<T>* node = new Node<T>(elem);
-	//node->current = elem;
+	struct Node<T>* node = new Node<T>;
+	node->current = elem;
 	node->next = this->_first;
 	node->prev = NULL;
 	if(this->_first != NULL) {
@@ -71,14 +74,16 @@ const T& List<T>::get(int index) const {
 }
 
 template<class T>
-void List<T>::remove(int index) {
+T List<T>::remove(int index) {
     this->validate(index);
 
     // TODO Don't remove the first one only
     struct Node<T>* tmp = this->_first->next;
+    T ret = this->_first->current;
     delete this->_first;
     this->_first = tmp;
     --this->_size;
+    return ret;
 }
 
 template<class T>
@@ -123,3 +128,6 @@ template class List<int>;
 
 #include "boats/Course.hpp"
 template class List<Course>;
+
+#include "users/User.hpp"
+template class List<User*>;

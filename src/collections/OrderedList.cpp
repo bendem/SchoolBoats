@@ -29,11 +29,12 @@ bool OrderedList<T>::shouldInsert(const T& current, const T& newElem) {
 }
 
 template<class T>
-void OrderedList<T>::add(const T& elem) {
+void OrderedList<T>::add(T elem) {
     // Insert on first position
     if(this->isEmpty() || this->shouldInsert(this->_first->current, elem)) {
         struct Node<T> *tmp = this->_first;
-        this->_first = new struct Node<T>(elem);
+        this->_first = new struct Node<T>;
+        this->_first->current = elem;
         this->_first->prev = NULL;
         this->_first->next = tmp;
         // If there was something after, link it to the first item
@@ -48,7 +49,8 @@ void OrderedList<T>::add(const T& elem) {
     struct Node<T> *prev = this->_first;
     while(prev != NULL) {
         if(current == NULL || this->shouldInsert(current->current, elem)) {
-            prev->next = new struct Node<T>(elem);
+            prev->next = new struct Node<T>;
+            prev->next->current = elem;
             prev->next->prev = prev;
             prev->next->next = current;
             break;
@@ -77,3 +79,6 @@ template class OrderedList<int>;
 
 #include "boats/Course.hpp"
 template class OrderedList<Course>;
+
+#include "users/User.hpp"
+template class OrderedList<User*>;

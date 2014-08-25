@@ -16,7 +16,7 @@ class OrderedList : public List<T> {
 		OrderedList(int);
 		OrderedList(const OrderedList&);
 
-        void add(const T&);
+        void add(T);
 
 		void setMode(int);
 		int getMode() const;

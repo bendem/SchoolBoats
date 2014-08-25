@@ -1,57 +1,34 @@
-/*
- * File:   main.cpp
- * Author: bendem
- */
-
 #include <cstdlib>
 #include <iostream>
+#include <fstream>
 #include <string>
 #include "collections/OrderedList.hpp"
 #include "collections/Vector.hpp"
 #include "exceptions/InvalidArgumentException.hpp"
 #include "exceptions/OutOfBoundsException.hpp"
 #include "utils/StringUtils.hpp"
+#include "users/User.hpp"
+#include "users/UserList.hpp"
+
+#define USER_FILE "./data/Users.dat"
 
 using namespace std;
 
 int main(int argc, char** argv) {
-    cout << "Test IDE" << StringUtils::toString(5) << endl;
+	User a("a", "a", Role::Admin);
+	cout << a << endl;
+	cout << User(a) << endl;
 
-    {
-	    try {
-	        Vector<int> v(-1);
-	    } catch (InvalidArgumentException e) {
-	        cout << e.getMessage() << endl;
-	    }
+	char choice;
+	User* currentUser;
+	UserList userList(USER_FILE);
+	userList.save(USER_FILE);
 
-	    Vector<int> v(3);
-		v.display();
-	    v.set(0, 5);
-		v.display();
-	    v.set(1, 4);
-		v.display();
-		cout << endl;
-
-	    Vector<int> b(v);
-	    b.display();
-	    cout << endl << b.size() << endl;
-	    b.display();
-	    cout << endl;
-    }
-
-    cout << endl << "Lists" << endl << endl;
-
-	{
-	    OrderedList<int> list;
-	    list.add(5);
-	    list.add(2);
-	    list.add(4);
-	    list.display();
-	    cout << endl << list.get(0) << list.get(1) << list.get(2) << endl;
-	    OrderedList<int> lel(list);
-	    lel.display();
+	try {
+		cout << userList.search("a") << endl;
+	} catch(Exception e) {
+		cout << endl << e << endl;
 	}
-
 
     return 0;
 }
