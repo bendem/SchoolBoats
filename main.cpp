@@ -91,12 +91,25 @@ char menu() {
 		cout << "3. Creer un utilisateur" << endl;
 		cout << "4. Changer un mot de passe" << endl;
 	} else {
+		cout << "1. Gerer les circuits" << endl;
+		cout << "\t1.1. Ajouter un circuit" << endl;
+		cout << "\t1.2. Ajouter un circuit a partir d'un fichier texte" << endl;
+		cout << "\t1.3. Afficher les donnees d'un circuit" << endl;
+		cout << "2. Gerer les regates" << endl;
+		cout << "\t2.1. Ajouter une regate" << endl;
+		cout << "\t2.2. Afficher la liste des regates" << endl;
+		cout << "\t2.3. Afficher une regate" << endl;
+		cout << "\t2.4. Supprimer une regate" << endl;
+		cout << "3. Gerer une regate" << endl;
+		cout << "\t3.1. Ajouter un concurrent" << endl;
+		cout << "\t3.2. Ajouter des concurrents depuis un fichier texte" << endl;
+		cout << "\t3.3. Lancer la regate" << endl;
 	}
 
 	cout << "N. Nouvelle session" << endl;
 	cout << "Q. Quitter" << endl;
 
-
+	cout << "Votre choix: ";
 	cin >> input;
 	return input.c_str()[0];
 }
