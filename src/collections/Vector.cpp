@@ -142,7 +142,7 @@ bool Vector<T>::isValid(int index) const {
 
 template<class T>
 void Vector<T>::display() const {
-	cout << "[ ";
+    cout << "[ ";
     for(int i = 0; i < this->_size; ++i) {
         if(this->_indexes[i]) {
             cout << this->_values[i] << " ";
@@ -155,7 +155,7 @@ void Vector<T>::display() const {
 
 template<class T>
 Vector<T>& Vector<T>::operator+(const T& elem) {
-	bool added = false;
+    bool added = false;
     for(int i = 0; i < this->_size && !added; ++i) {
         if(!this->_indexes[i]) {
             this->_indexes[i] = true;

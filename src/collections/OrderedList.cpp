@@ -10,22 +10,22 @@ OrderedList<T>::OrderedList() : OrderedList(OrderedList::ASCENDING) {}
 
 template<class T>
 OrderedList<T>::OrderedList(int mode) {
-	this->_mode = mode;
+    this->_mode = mode;
 }
 template<class T>
 OrderedList<T>::OrderedList(const OrderedList& list) : List<T>::List(list) {
-	this->_mode = list._mode;
+    this->_mode = list._mode;
 }
 
 template<class T>
 bool OrderedList<T>::shouldInsert(const T& current, const T& newElem) {
-	if(current > newElem && this->_mode == OrderedList::ASCENDING) {
-		return true;
-	}
-	if(current < newElem && this->_mode == OrderedList::DESCENDING) {
-		return true;
-	}
-	return false;
+    if(current > newElem && this->_mode == OrderedList::ASCENDING) {
+        return true;
+    }
+    if(current < newElem && this->_mode == OrderedList::DESCENDING) {
+        return true;
+    }
+    return false;
 }
 
 template<class T>
@@ -63,15 +63,15 @@ void OrderedList<T>::add(T elem) {
 
 template<class T>
 void OrderedList<T>::setMode(int mode) {
-	if(this->_mode != mode) {
-		// TODO Reverse list order!
-	}
-	this->_mode = mode;
+    if(this->_mode != mode) {
+        // TODO Reverse list order!
+    }
+    this->_mode = mode;
 }
 
 template<class T>
 int OrderedList<T>::getMode() const {
-	return this->_mode;
+    return this->_mode;
 }
 
 // Pre setting template usage

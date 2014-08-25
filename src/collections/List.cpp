@@ -49,28 +49,28 @@ List<T>::~List() {
 
 template<class T>
 void List<T>::add(const T& elem) {
-	// Adds elements to the start of the List
-	struct Node<T>* node = new Node<T>;
-	node->current = elem;
-	node->next = this->_first;
-	node->prev = NULL;
-	if(this->_first != NULL) {
-		node->next->prev = node;
-	}
-	this->_first = node;
-	++this->_size;
+    // Adds elements to the start of the List
+    struct Node<T>* node = new Node<T>;
+    node->current = elem;
+    node->next = this->_first;
+    node->prev = NULL;
+    if(this->_first != NULL) {
+        node->next->prev = node;
+    }
+    this->_first = node;
+    ++this->_size;
 }
 
 template<class T>
 const T& List<T>::get(int index) const {
-	this->validate(index);
-	int i = 0;
-	struct Node<T>* current = this->_first;
-	while(i < index) {
-		current = current->next;
-		++i;
-	}
-	return current->current;
+    this->validate(index);
+    int i = 0;
+    struct Node<T>* current = this->_first;
+    while(i < index) {
+        current = current->next;
+        ++i;
+    }
+    return current->current;
 }
 
 template<class T>
@@ -107,12 +107,12 @@ bool List<T>::isValid(int index) const {
 
 template<class T>
 void List<T>::display() const {
-	cout << "[ ";
-	struct Node<T>* cur = this->_first;
-	while(cur != NULL) {
-		cout << cur->current << " ";
-		cur = cur->next;
-	}
+    cout << "[ ";
+    struct Node<T>* cur = this->_first;
+    while(cur != NULL) {
+        cout << cur->current << " ";
+        cur = cur->next;
+    }
     cout << "]";
 }
 

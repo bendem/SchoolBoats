@@ -5,35 +5,35 @@
 #include "utils/StreamUtils.hpp"
 
 enum Role {
-	Admin, ClubManager
+    Admin, ClubManager
 };
 
 class User {
 
-	private:
-		Role role;
-		string login;
-		string password;
+    private:
+        Role role;
+        string login;
+        string password;
 
-	public:
-		User(string, string, Role);
-		User(const User&);
-		~User();
+    public:
+        User(string, string, Role);
+        User(const User&);
+        ~User();
 
-		Role getRole() const;
-		string getLogin() const;
-		bool checkPassword(string) const;
-		void setPassword(string);
+        Role getRole() const;
+        string getLogin() const;
+        bool checkPassword(string) const;
+        void setPassword(string);
 
-		bool operator>(const User&) const;
-		bool operator<(const User&) const;
-		bool operator==(const User&) const;
-		const User& operator=(const User&);
-		friend ostream& operator<<(ostream&, const User&);
+        bool operator>(const User&) const;
+        bool operator<(const User&) const;
+        bool operator==(const User&) const;
+        const User& operator=(const User&);
+        friend ostream& operator<<(ostream&, const User&);
 
-		// Serialization
-		void save(ostream&) const;
-		static User load(istream&);
+        // Serialization
+        void save(ostream&) const;
+        static User load(istream&);
 
 };
 

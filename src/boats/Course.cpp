@@ -51,13 +51,13 @@ Course& Course::operator=(const Course& c) {
 }
 
 bool Course::operator>(const Course& c) const {
-	// TODO implement this
+    // TODO implement this
 }
 bool Course::operator<(const Course& c) const {
-	// TODO implement this
+    // TODO implement this
 }
 bool Course::operator==(const Course& c) const {
-	// TODO implement this
+    // TODO implement this
 }
 
 ostream& operator<<(ostream& s, const Course& c) {

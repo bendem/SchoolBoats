@@ -6,23 +6,23 @@
 template<class T>
 class OrderedList : public List<T> {
 
-	protected:
-		int _mode;
+    protected:
+        int _mode;
 
-		bool shouldInsert(const T&, const T&);
+        bool shouldInsert(const T&, const T&);
 
-	public:
-		OrderedList();
-		OrderedList(int);
-		OrderedList(const OrderedList&);
+    public:
+        OrderedList();
+        OrderedList(int);
+        OrderedList(const OrderedList&);
 
         void add(T);
 
-		void setMode(int);
-		int getMode() const;
+        void setMode(int);
+        int getMode() const;
 
-		static int ASCENDING;
-		static int DESCENDING;
+        static int ASCENDING;
+        static int DESCENDING;
 };
 
 #endif

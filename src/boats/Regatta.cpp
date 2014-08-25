@@ -9,8 +9,8 @@ Regatta::Regatta(string name, string location, const FloatingObject& object, str
 }
 
 Regatta::Regatta(const Regatta& regatta) : Activity(regatta) {
-	this->raceName = regatta.raceName;
-	this->start = regatta.start;
+    this->raceName = regatta.raceName;
+    this->start = regatta.start;
 }
 
 string Regatta::getRaceName() const {
@@ -55,28 +55,28 @@ istream& operator>>(istream& s, Regatta& r) {
 }
 
 void Regatta::save(ostream& os) const {
-	StreamUtils::write(os, this->raceName);
-	StreamUtils::write(os, this->start.getTime());
-	StreamUtils::write(os, this->start.isDate());
-	StreamUtils::write(os, this->location);
-	StreamUtils::write(os, this->name);
-	StreamUtils::write(os, this->object->getIdentifier());
-	StreamUtils::write(os, this->object->getModel().getManufacturer());
-	StreamUtils::write(os, this->object->getModel().getModel());
-	StreamUtils::write(os, this->object->getModel().getSize());
+    StreamUtils::write(os, this->raceName);
+    StreamUtils::write(os, this->start.getTime());
+    StreamUtils::write(os, this->start.isDate());
+    StreamUtils::write(os, this->location);
+    StreamUtils::write(os, this->name);
+    StreamUtils::write(os, this->object->getIdentifier());
+    StreamUtils::write(os, this->object->getModel().getManufacturer());
+    StreamUtils::write(os, this->object->getModel().getModel());
+    StreamUtils::write(os, this->object->getModel().getSize());
 }
 
 void Regatta::load(istream& is) {
-	this->raceName =            StreamUtils::readString(is);
-	this->start.setTime(        StreamUtils::readInt(is));
-	this->start.setDate(        StreamUtils::readBool(is));
-	this->location =            StreamUtils::readString(is);
-	this->name     =            StreamUtils::readString(is);
-	this->object->setIdentifier(StreamUtils::readString(is));
+    this->raceName =            StreamUtils::readString(is);
+    this->start.setTime(        StreamUtils::readInt(is));
+    this->start.setDate(        StreamUtils::readBool(is));
+    this->location =            StreamUtils::readString(is);
+    this->name     =            StreamUtils::readString(is);
+    this->object->setIdentifier(StreamUtils::readString(is));
 
-	string manufacturer = StreamUtils::readString(is);
-	string model        = StreamUtils::readString(is);
-	float modelSize     = StreamUtils::readFloat(is);
+    string manufacturer = StreamUtils::readString(is);
+    string model        = StreamUtils::readString(is);
+    float modelSize     = StreamUtils::readFloat(is);
 
-	this->object->setModel(FloatingObjectModel(manufacturer, model, modelSize));
+    this->object->setModel(FloatingObjectModel(manufacturer, model, modelSize));
 }

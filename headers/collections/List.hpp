@@ -35,7 +35,7 @@ class List {
         bool isEmpty() const;
         int size() const;
         T remove(int);
-		bool isValid(int) const;
+        bool isValid(int) const;
         void display() const;
 
 };

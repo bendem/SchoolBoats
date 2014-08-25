@@ -6,19 +6,19 @@
 
 class Track {
 
-	private:
-		string name;
-		Vector<Point*>* points;
+    private:
+        string name;
+        Vector<Point*>* points;
 
-	public:
-		Track();
-		Track(string, int);
-		Track(const Track&);
-		~Track();
+    public:
+        Track();
+        Track(string, int);
+        Track(const Track&);
+        ~Track();
 
-		string getName() const;
-		Point& getPoint(int) const;
-		int getPointCount() const;
+        string getName() const;
+        Point& getPoint(int) const;
+        int getPointCount() const;
 
 };
 
