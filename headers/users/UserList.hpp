@@ -1,13 +1,13 @@
 #ifndef USERLIST_HPP
 #define USERLIST_HPP
 
-#include <iostream>
 #include <fstream>
+#include <iostream>
 #include <string>
 #include "collections/OrderedList.hpp"
-#include "users/User.hpp"
 #include "exceptions/DuplicatedUserException.hpp"
 #include "exceptions/UserNotFoundException.hpp"
+#include "users/User.hpp"
 
 using namespace std;
 

@@ -1,8 +1,8 @@
 #ifndef REGATTAFILE_HPP
 #define REGATTAFILE_HPP
 
-#include <iostream>
 #include <fstream>
+#include <iostream>
 #include <string>
 #include "boats/Regatta.hpp"
 

@@ -1,8 +1,8 @@
 #ifndef STRINGUTILS_HPP
 #define STRINGUTILS_HPP
 
-#include <string>
 #include <sstream>
+#include <string>
 #include "collections/Vector.hpp"
 
 using namespace std;

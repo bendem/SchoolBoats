@@ -2,8 +2,8 @@
 #define TRACK_HPP
 
 #include <cstdlib>
-#include <iostream>
 #include <fstream>
+#include <iostream>
 #include <string>
 #include "boats/Point.hpp"
 #include "collections/Vector.hpp"
