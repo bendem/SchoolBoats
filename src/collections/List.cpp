@@ -77,13 +77,33 @@ template<class T>
 T List<T>::remove(int index) {
     this->validate(index);
 
-    // TODO Don't remove the first one only
-    struct Node<T>* tmp = this->_first->next;
-    T ret = this->_first->current;
-    delete this->_first;
-    this->_first = tmp;
+    if(index == 0) {
+        struct Node<T>* tmp = this->_first->next;
+        T ret = this->_first->current;
+        delete this->_first;
+        this->_first = tmp;
+        --this->_size;
+        return ret;
+    }
+
+    cout << "1";
+
+    struct Node<T>* cur = this->_first->next;
+    int i = 1;
+    while(i < index) {
+        cur = cur->next;
+        ++i;
+    }
+    T tmp = cur->current;
+    if(cur->prev) {
+        cur->prev->next = cur->next;
+    }
+    if(cur->next) {
+        cur->next->prev = cur->prev;
+    }
+    delete cur;
     --this->_size;
-    return ret;
+    return tmp;
 }
 
 template<class T>
