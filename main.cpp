@@ -78,9 +78,6 @@ void login() {
     }
 }
 
-/**
- * When this returns 0, quit
- */
 char menu() {
     char input;
 
