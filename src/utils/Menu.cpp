@@ -59,7 +59,7 @@ int menu() {
     cout << "8. Nouvelle session" << endl;
     cout << "0. Quitter" << endl;
 
-    cout << "Votre choix: ";
+    cout << endl << "Votre choix: ";
     cin >> input;
     return input;
 }

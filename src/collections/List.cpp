@@ -151,3 +151,9 @@ template class List<Course>;
 
 #include "users/User.hpp"
 template class List<User*>;
+
+#include "boats/Regatta.hpp"
+template class List<Regatta*>;
+
+#include "boats/Track.hpp"
+template class List<Track*>;

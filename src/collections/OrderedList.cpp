@@ -82,3 +82,6 @@ template class OrderedList<Course>;
 
 #include "users/User.hpp"
 template class OrderedList<User*>;
+
+#include "boats/Regatta.hpp"
+template class List<Regatta*>;

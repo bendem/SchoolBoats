@@ -1,12 +1,15 @@
 #include <cstdlib>
-#include <iostream>
 #include <fstream>
+#include <iostream>
 #include <string>
+#include "boats/Regatta.hpp"
 #include "collections/OrderedList.hpp"
 #include "collections/Vector.hpp"
 #include "exceptions/InvalidArgumentException.hpp"
 #include "exceptions/OutOfBoundsException.hpp"
 #include "exceptions/UserNotFoundException.hpp"
+#include "menu/RegattaActions.hpp"
+#include "menu/TrackActions.hpp"
 #include "users/User.hpp"
 #include "users/UserList.hpp"
 #include "utils/Menu.hpp"
@@ -23,7 +26,10 @@ void changePassword(string);
 
 // Global stuff
 UserList userList(USER_FILE);
-User* currentUser;
+User* currentUser = NULL;
+Regatta* currentRegatta = NULL;
+OrderedList<Regatta*>* regattas = NULL;
+List<Track*>* tracks = NULL;
 
 int main(int argc, char** argv) {
     char choice;
@@ -67,7 +73,40 @@ void action(int choice) {
                 break;
         }
     } else {
-        // TODO Manager menu
+        switch(choice) {
+            case 11:
+                addTrack();
+                break;
+            case 12:
+                addTrackFromFile();
+                break;
+            case 13:
+                displayTrack();
+                break;
+            case 21:
+                addRegatta();
+                break;
+            case 22:
+                displayRegattaList();
+                break;
+            case 23:
+                displayRegatta();
+                break;
+            case 24:
+                deleteRegatta();
+                break;
+            case 31:
+                addContestant();
+                break;
+            case 32:
+                addContestantFromFile();
+                break;
+            case 33:
+                startRegatta();
+                break;
+            default:
+                result("You did something wrong :(");
+        }
     }
 }
 
